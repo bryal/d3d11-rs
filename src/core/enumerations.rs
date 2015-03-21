@@ -20,13 +20,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-//! Enumerations provided by D3D11
+//! Core Enumerations provided by D3D11
 //!
 //! # References
-//! [D3D11 Enumerations, MSDN]
+//! [D3D11 Core Enumerations, MSDN]
 //! (https://msdn.microsoft.com/en-us/library/windows/desktop/ff476152(v =vs.85).aspx)
 
 #![allow(non_snake_case, non_camel_case_types)]
+
+// CORE ENUMERATIONS
 
 pub enum D3D11_ASYNC_GETDATA_FLAG {
 	D3D11_ASYNC_GETDATA_DONOTFLUSH = 0x1

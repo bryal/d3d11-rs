@@ -32,7 +32,8 @@ use winapi::{ BOOL, UINT, FLOAT,
 	BYTE, LPCSTR, UINT8,
 	UINT64, INT, RECT};
 use dxgi::DXGI_FORMAT;
-use enumerations::*;
+
+use super::enumerations::*;
 
 pub type D3D11_RECT = RECT;
 

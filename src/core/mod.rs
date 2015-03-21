@@ -20,24 +20,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-//! Rust bindings for D3D11
+//! Core components
+//!
+//! # References
+//! [Core Reference, MSDN]
+//! (https://msdn.microsoft.com/en-us/library/windows/desktop/ff476151(v=vs.85).aspx)
 
-#![cfg(windows)]
-#![feature(libc)]
+pub use self::enumerations::*;
+pub use self::structures::*;
+pub use self::functions::*;
+pub use self::interfaces::*;
 
-extern crate libc;
-extern crate winapi;
-extern crate dxgi;
-
-pub use core::enumerations::*;
-pub use core::structures::*;
-pub use core::functions::*;
-pub use core::interfaces::*;
-pub use common_version::enumerations::*;
-
-mod macros;
-pub mod core;
-pub mod common_version;
-
-#[cfg(test)]
-mod test;
+pub mod enumerations;
+pub mod structures;
+pub mod functions;
+pub mod interfaces;

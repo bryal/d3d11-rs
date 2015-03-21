@@ -1,0 +1,13 @@
+[package]
+name = "d3d11"
+version = "0.0.1"
+authors = ["bryal <96.bryal@gmail.com>"]
+description = "Rust bindings for D3D11"
+repository = "https://github.com/bryal/d3d11-rs"
+readme = "README.md"
+keywords = ["Windows", "Direct3D", "DirectX", "DXGI"]
+license = "MIT"
+build = "build.rs"
+
+[dependencies]
+winapi = "*"

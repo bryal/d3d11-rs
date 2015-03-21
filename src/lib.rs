@@ -28,14 +28,14 @@
 extern crate libc;
 extern crate winapi;
 
-pub use interfaces::*;
 pub use structures::*;
-pub use constants::*;
+pub use functions::*;
+pub use interfaces::*;
 
 mod macros;
-pub mod structures;
 pub mod enumerations;
-pub mod constants;
+pub mod structures;
+pub mod functions;
 pub mod interfaces;
 
 #[cfg(test)]

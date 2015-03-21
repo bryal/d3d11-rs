@@ -27,7 +27,9 @@
 
 extern crate libc;
 extern crate winapi;
+extern crate dxgi;
 
+pub use enumerations::*;
 pub use structures::*;
 pub use functions::*;
 pub use interfaces::*;

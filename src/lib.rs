@@ -27,6 +27,7 @@
 
 extern crate libc;
 extern crate winapi;
+#[macro_use]
 extern crate dxgi;
 
 pub use core::enumerations::*;
@@ -35,7 +36,6 @@ pub use core::functions::*;
 pub use core::interfaces::*;
 pub use common_version::enumerations::*;
 
-mod macros;
 pub mod core;
 pub mod common_version;
 

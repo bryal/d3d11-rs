@@ -27,9 +27,11 @@
 //! (https://msdn.microsoft.com/en-us/library/windows/desktop/ff476153(v=vs.85).aspx)
 
 use winapi::{ UINT, HRESULT, HMODULE };
-use dxgi::{ IDXGIAdapter, IDXGISwapChain };
+use dxgi::{ IDXGIAdapter, IDXGISwapChain, DXGI_SWAP_CHAIN_DESC };
 
-use common_version::enumerations::*;
+use core::interfaces::{ ID3D11Device, ID3D11DeviceContext };
+
+// use common_version::enumerations::*;
 
 #[link(name="d3d11")]
 extern "C" {

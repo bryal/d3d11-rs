@@ -20,32 +20,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-//! Rust bindings for D3D11
+//! "The Direct3D API defines several API elements to help you create and manage resources"
+//!
+//! # References
+//! [Resource Reference, MSDN]
+//! (https://msdn.microsoft.com/en-us/library/windows/desktop/ff476169%28v=vs.85%29.aspx)
 
-#![cfg(windows)]
-#![feature(libc)]
+pub use self::enumerations::*;
+pub use self::structures::*;
+pub use self::interfaces::*;
 
-extern crate libc;
-extern crate winapi;
-#[macro_use]
-extern crate dxgi;
-
-pub use core::enumerations::*;
-pub use core::structures::*;
-pub use core::functions::*;
-pub use core::interfaces::*;
-
-pub use common_version::enumerations::*;
-
-pub use resource::enumerations::*;
-pub use resource::structures::*;
-
-pub use shader::enumerations::*;
-
-pub mod core;
-pub mod common_version;
-pub mod resource;
-pub mod shader;
-
-#[cfg(test)]
-mod test;
+pub mod enumerations;
+pub mod structures;
+pub mod interfaces;

@@ -26,17 +26,15 @@
 //! [Resource Interfaces, MSDN]
 //! (https://msdn.microsoft.com/en-us/library/windows/desktop/ff476172(v=vs.85).aspx)
 
-use libc::c_void;
-use winapi::{ UINT, REFGUID, SIZE_T,
-	HRESULT, REFIID, ULONG,
-	HANDLE, FLOAT, BOOL,
-	UINT8 };
-use dxgi::{ IUnknown, IUnknownT, DXGI_FORMAT };
+#![allow(non_snake_case)]
 
-// use core::enumerations::*;
-// use core::structures::{ };
+use libc::c_void;
+use winapi::minwindef::*;
+use winapi::{ REFGUID, HRESULT, REFIID };
+use dxgi::{ IUnknown, IUnknownT };
+
 use core::interfaces::{ ID3D11DeviceChildT, ID3D11Device };
-use resource::enumerations::{ D3D11_RESOURCE_DIMENSION };
+use resource::enumerations::D3D11_RESOURCE_DIMENSION;
 use resource::structures::{ D3D11_UNORDERED_ACCESS_VIEW_DESC,
 	D3D11_SHADER_RESOURCE_VIEW_DESC,
 	D3D11_RENDER_TARGET_VIEW_DESC,
@@ -45,18 +43,17 @@ use resource::structures::{ D3D11_UNORDERED_ACCESS_VIEW_DESC,
 	D3D11_TEXTURE1D_DESC,
 	D3D11_TEXTURE2D_DESC,
 	D3D11_TEXTURE3D_DESC };
-// use common_version::enumerations::*;
 
-#[repr(C)] pub struct ID3D11Buffer { pub vtable: *mut ID3D11Buffer }
-#[repr(C)] pub struct ID3D11Resource { pub vtable: *mut ID3D11Resource }
-#[repr(C)] pub struct ID3D11Texture1D { pub vtable: *mut ID3D11Texture1D }
-#[repr(C)] pub struct ID3D11Texture2D { pub vtable: *mut ID3D11Texture2D }
-#[repr(C)] pub struct ID3D11Texture3D { pub vtable: *mut ID3D11Texture3D }
-#[repr(C)] pub struct ID3D11DepthStencilView { pub vtable: *mut ID3D11DepthStencilView }
-#[repr(C)] pub struct ID3D11RenderTargetView { pub vtable: *mut ID3D11RenderTargetView }
-#[repr(C)] pub struct ID3D11ShaderResourceView { pub vtable: *mut ID3D11ShaderResourceView }
-#[repr(C)] pub struct ID3D11UnorderedAccessView { pub vtable: *mut ID3D11UnorderedAccessView }
-#[repr(C)] pub struct ID3D11View { pub vtable: *mut ID3D11View }
+#[repr(C)] pub struct ID3D11Buffer { pub vtable: *mut ID3D11BufferVtbl }
+#[repr(C)] pub struct ID3D11Resource { pub vtable: *mut ID3D11ResourceVtbl }
+#[repr(C)] pub struct ID3D11Texture1D { pub vtable: *mut ID3D11Texture1DVtbl }
+#[repr(C)] pub struct ID3D11Texture2D { pub vtable: *mut ID3D11Texture2DVtbl }
+#[repr(C)] pub struct ID3D11Texture3D { pub vtable: *mut ID3D11Texture3DVtbl }
+#[repr(C)] pub struct ID3D11DepthStencilView { pub vtable: *mut ID3D11DepthStencilViewVtbl }
+#[repr(C)] pub struct ID3D11RenderTargetView { pub vtable: *mut ID3D11RenderTargetViewVtbl }
+#[repr(C)] pub struct ID3D11ShaderResourceView { pub vtable: *mut ID3D11ShaderResourceViewVtbl }
+#[repr(C)] pub struct ID3D11UnorderedAccessView { pub vtable: *mut ID3D11UnorderedAccessViewVtbl }
+#[repr(C)] pub struct ID3D11View { pub vtable: *mut ID3D11ViewVtbl }
 
 c_vtable!{
 	_ of (), trait IUnknownT {
@@ -96,7 +93,7 @@ c_vtable!{
 				{
 					fn GetDesc(pDesc: *mut D3D11_DEPTH_STENCIL_VIEW_DESC) -> (),
 				}
-				pub ID3D11RenderTargetViewViewVtbl of ID3D11RenderTargetView,
+				pub ID3D11RenderTargetViewVtbl of ID3D11RenderTargetView,
 					pub trait ID3D11RenderTargetViewT
 				{
 					fn GetDesc(pDesc: *mut D3D11_RENDER_TARGET_VIEW_DESC) -> (),

@@ -28,25 +28,12 @@
 
 #![allow(non_snake_case, non_camel_case_types)]
 
-use winapi::{ BOOL, UINT, FLOAT,
-	BYTE, LPCSTR, UINT8,
-	UINT64, INT, RECT};
+use winapi::minwindef::*;
+use winapi::basetsd::*;
+use winapi::{ LPCSTR, RECT};
 use dxgi::DXGI_FORMAT;
 
-use core::enumerations::{ D3D11_COUNTER,
-	D3D11_DEPTH_WRITE_MASK,
-	D3D11_COMPARISON_FUNC,
-	D3D11_STENCIL_OP,
-	D3D11_TILED_RESOURCES_TIER,
-	D3D11_INPUT_CLASSIFICATION,
-	D3D11_QUERY,
-	D3D11_FILL_MODE,
-	D3D11_CULL_MODE,
-	D3D11_BLEND,
-	D3D11_BLEND_OP,
-	D3D11_LOGIC_OP,
-	D3D11_FILTER,
-	D3D11_TEXTURE_ADDRESS_MODE };
+use core::enumerations::*;
 
 pub type D3D11_RECT = RECT;
 

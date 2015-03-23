@@ -26,15 +26,14 @@
 //! [D3D11 Resource Structures, MSDN]
 //! (https://msdn.microsoft.com/en-us/library/windows/desktop/ff476173(v=vs.85).aspx)
 
+#![allow(non_snake_case)]
+
 use libc::c_void;
-use winapi::{ UINT, UINT8, UINT16, BOOL };
+use winapi::minwindef::*;
+use winapi::basetsd::*;
 use dxgi::{ DXGI_FORMAT, DXGI_SAMPLE_DESC };
 
-use resource::enumerations::{ D3D11_UAV_DIMENSION,
-	D3D11_DSV_DIMENSION,
-	D3D11_RTV_DIMENSION,
-	D3D11_SRV_DIMENSION,
-	D3D11_USAGE };
+use resource::enumerations::*;
 
 #[repr(C)] pub struct D3D11_BUFFER_DESC {
 	ByteWidth: UINT,

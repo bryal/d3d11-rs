@@ -26,23 +26,18 @@
 //! [D3D11 Interfaces, MSDN]
 //! (https://msdn.microsoft.com/en-us/library/windows/desktop/ff476154(v=vs.85).aspx)
 
+#![allow(non_snake_case)]
+
 use libc::c_void;
-use winapi::{ UINT, REFGUID, SIZE_T, HRESULT, REFIID,
-	ULONG, HANDLE, FLOAT, BOOL, UINT8,
-	LPSTR, LPCWSTR, DWORD, INT, UINT64 };
+use winapi::minwindef::*;
+use winapi::basetsd::*;
+use winapi::{ REFGUID, HRESULT, REFIID, HANDLE, LPSTR, LPCWSTR, };
 use dxgi::{ IUnknown, IUnknownT, DXGI_FORMAT };
 
-use core::structures::{ D3D11_SAMPLER_DESC, D3D11_INPUT_ELEMENT_DESC,
-	D3D11_COUNTER_INFO, D3D11_BLEND_DESC1,
-	D3D11_DEPTH_STENCIL_DESC, D3D11_RASTERIZER_DESC,
-	D3D11_RASTERIZER_DESC1, D3D11_RECT,
-	D3D11_BOX, D3D11_SO_DECLARATION_ENTRY,
-	D3D11_VIEWPORT, D3D11_COUNTER_DESC,
-	D3D11_QUERY_DESC, D3D11_BLEND_DESC };
-use core::enumerations::{ D3D11_DEVICE_CONTEXT_TYPE, D3D11_FEATURE,D3D11_COUNTER_TYPE,
-	D3D11_PRIMITIVE_TOPOLOGY };
-use common_version::enumerations::{ D3D_DRIVER_TYPE, D3D_FEATURE_LEVEL };
-use resource::enumerations::{ D3D11_MAP };
+use core::enumerations::*;
+use core::structures::*;
+use common_version::enumerations::D3D_FEATURE_LEVEL;
+use resource::enumerations::D3D11_MAP;
 use resource::structures::{ D3D11_BUFFER_DESC, D3D11_SHADER_RESOURCE_VIEW_DESC,
 	D3D11_SUBRESOURCE_DATA, D3D11_UNORDERED_ACCESS_VIEW_DESC,
 	D3D11_RENDER_TARGET_VIEW_DESC, D3D11_DEPTH_STENCIL_VIEW_DESC,

@@ -29,12 +29,12 @@
 #![allow(non_snake_case)]
 
 use libc::c_void;
-use winapi::{ LPVOID, SIZE_T, LPCVOID, LPCSTR, HRESULT,
-	REFIID, ULONG, INT, BOOL, LPCWSTR,
-	UINT };
+use winapi::minwindef::*;
+use winapi::basetsd::*;
+use winapi::{ LPCSTR, HRESULT, REFIID, LPCWSTR };
 use dxgi::IUnknownT;
 
-use common_version::enumerations::{ D3D_INCLUDE_TYPE };
+use common_version::enumerations::D3D_INCLUDE_TYPE;
 
 pub type ID3DBlob = ID3D10Blob;
 

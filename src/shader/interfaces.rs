@@ -26,10 +26,12 @@
 //! [Resource Interfaces, MSDN]
 //! (https://msdn.microsoft.com/en-us/library/windows/desktop/ff476172(v=vs.85).aspx)
 
+#![allow(non_snake_case)]
+
 use libc::c_void;
-use winapi::{ INT, UINT, ULONG, HRESULT, LPCSTR,
-	REFIID, REFGUID, LPSTR, SIZE_T, UINT64,
-	BOOL };
+use winapi::minwindef::*;
+use winapi::basetsd::*;
+use winapi::{ HRESULT, LPCSTR, REFIID, REFGUID, LPSTR };
 use dxgi::{ IUnknown, IUnknownT };
 
 use common_version::enumerations::{ D3D_FEATURE_LEVEL, D3D_PRIMITIVE };
@@ -40,9 +42,8 @@ use shader::structures::{ D3D11_SHADER_VARIABLE_DESC, D3D11_SHADER_TYPE_DESC,
 	D3D11_TRACE_REGISTER, D3D11_TRACE_VALUE,
 	D3D11_TRACE_STEP, D3D11_TRACE_STATS,
 	D3D11_SHADER_DESC, D3D11_SHADER_INPUT_BIND_DESC,
-	D3D11_SIGNATURE_PARAMETER_DESC };
-use shader::structures::{ D3D11_PARAMETER_DESC, D3D11_LIBRARY_DESC,
-	D3D11_CLASS_INSTANCE_DESC };
+	D3D11_SIGNATURE_PARAMETER_DESC, D3D11_PARAMETER_DESC,
+	D3D11_LIBRARY_DESC, D3D11_CLASS_INSTANCE_DESC };
 
 #[repr(C)] pub struct ID3D11ClassInstance { pub vtable: *mut ID3D11ClassInstanceVtbl }
 #[repr(C)] pub struct ID3D11ClassLinkage { pub vtable: *mut ID3D11ClassLinkageVtbl }

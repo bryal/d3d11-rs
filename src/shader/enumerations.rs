@@ -28,9 +28,7 @@
 
 #![allow(non_camel_case_types)]
 
-use common_version::enumerations::{ D3D_CBUFFER_TYPE, D3D_RESOURCE_RETURN_TYPE,
-	D3D_TESSELLATOR_DOMAIN, D3D_TESSELLATOR_PARTITIONING,
-	D3D_TESSELLATOR_OUTPUT_PRIMITIVE };
+use common_version::enumerations::*;
 
 pub type D3D11_CBUFFER_TYPE = D3D_CBUFFER_TYPE;
 pub type D3D11_RESOURCE_RETURN_TYPE = D3D_RESOURCE_RETURN_TYPE;

@@ -26,8 +26,13 @@
 //! [Common Version Interfaces, MSDN]
 //! (https://msdn.microsoft.com/en-us/library/windows/desktop/ff728662(v=vs.85).aspx)
 
-use winapi::{ LPVOID, SIZE_T };
+use libc::c_void;
+use winapi::{ LPVOID, SIZE_T, LPCVOID, LPCSTR, HRESULT,
+	REFIID, ULONG, INT, BOOL, LPCWSTR,
+	UINT };
 use dxgi::IUnknownT;
+
+use common_version::enumerations::{ D3D_INCLUDE_TYPE };
 
 type ID3DBlob = ID3D10Blob;
 
@@ -48,12 +53,12 @@ c_vtable!{
 		pub ID3DUserDefinedAnnotationVtbl of ID3DUserDefinedAnnotation, pub trait ID3DUserDefinedAnnotationT {
 			fn BeginEvent(Name: LPCWSTR) -> INT,
 			fn EndEvent() -> INT,
-			fn SetMarker(Name: LPCWSTR) -> void,
+			fn SetMarker(Name: LPCWSTR) -> (),
 			fn GetStatus() -> BOOL,
 		}
 	]
 	pub ID3DIncludeVtbl of ID3DInclude, pub trait ID3DIncludeT {
-		fn Open(IncludeType: D3D_INCLUDE_TYPE, pFileName: LPCSTR, pParentData: LPCVOID, ppData: *mut *mut LPCVOID, pBytes: *mut ppData) -> HRESULT,
+		fn Open(IncludeType: D3D_INCLUDE_TYPE, pFileName: LPCSTR, pParentData: LPCVOID, ppData: *mut LPCVOID, pBytes: *mut UINT) -> HRESULT,
 		fn Close(pData: LPCVOID) -> HRESULT,
 	}
 }

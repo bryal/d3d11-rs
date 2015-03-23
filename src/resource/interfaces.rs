@@ -65,51 +65,51 @@ c_vtable!{
 		fn Release() -> ULONG,
 	} with heirs [
 		_ of (), trait ID3D11DeviceChildT {
-			fn GetDevice(device: *mut *mut ID3D11Device) -> c_void,
+			fn GetDevice(device: *mut *mut ID3D11Device) -> (),
 			fn GetPrivateData(guid: REFGUID, data_size: *mut UINT, data: *mut c_void) -> HRESULT,
 			fn SetPrivateData(guid: REFGUID, data_size: UINT, data: *const c_void) -> HRESULT,
 			fn SetPrivateDataInterface(guid: REFGUID, data: *const IUnknown) -> HRESULT,
 		} with heirs [
 			pub ID3D11ResourceVtbl of ID3D11Resource, pub trait ID3D11ResourceT {
-				fn GetType(pResourceDimension: *mut D3D11_RESOURCE_DIMENSION) -> c_void,
-				fn SetEvictionPriority(EvictionPriority: UINT) -> c_void,
+				fn GetType(pResourceDimension: *mut D3D11_RESOURCE_DIMENSION) -> (),
+				fn SetEvictionPriority(EvictionPriority: UINT) -> (),
 				fn GetEvictionPriority() -> UINT,
 			} with heirs [
 				pub ID3D11BufferVtbl of ID3D11Buffer, pub trait ID3D11BufferT {
-					fn GetDesc(pDesc: *mut D3D11_BUFFER_DESC) -> c_void,
+					fn GetDesc(pDesc: *mut D3D11_BUFFER_DESC) -> (),
 				}
 				pub ID3D11Texture1DVtbl of ID3D11Texture1D, pub trait ID3D11Texture1DT {
-					fn GetDesc(pDesc: *mut D3D11_TEXTURE1D_DESC) -> c_void,
+					fn GetDesc(pDesc: *mut D3D11_TEXTURE1D_DESC) -> (),
 				}
 				pub ID3D11Texture2DVtbl of ID3D11Texture2D, pub trait ID3D11Texture2DT {
-					fn GetDesc(pDesc: *mut D3D11_TEXTURE2D_DESC) -> c_void,
+					fn GetDesc(pDesc: *mut D3D11_TEXTURE2D_DESC) -> (),
 				}
 				pub ID3D11Texture3DVtbl of ID3D11Texture3D, pub trait ID3D11Texture3DT {
-					fn GetDesc(pDesc: *mut D3D11_TEXTURE3D_DESC) -> c_void,
+					fn GetDesc(pDesc: *mut D3D11_TEXTURE3D_DESC) -> (),
 				}
 			]
 			pub ID3D11ViewVtbl of ID3D11View, pub trait ID3D11ViewT {
-				fn GetResource(ppResource: *mut *mut ID3D11Resource) -> c_void,
+				fn GetResource(ppResource: *mut *mut ID3D11Resource) -> (),
 			} with heirs [
 				pub ID3D11DepthStencilViewVtbl of ID3D11DepthStencilView,
 					pub trait ID3D11DepthStencilViewT
 				{
-					fn GetDesc(pDesc: *mut D3D11_DEPTH_STENCIL_VIEW_DESC) -> c_void,
+					fn GetDesc(pDesc: *mut D3D11_DEPTH_STENCIL_VIEW_DESC) -> (),
 				}
 				pub ID3D11RenderTargetViewViewVtbl of ID3D11RenderTargetView,
 					pub trait ID3D11RenderTargetViewT
 				{
-					fn GetDesc(pDesc: *mut D3D11_RENDER_TARGET_VIEW_DESC) -> c_void,
+					fn GetDesc(pDesc: *mut D3D11_RENDER_TARGET_VIEW_DESC) -> (),
 				}
 				pub ID3D11ShaderResourceViewVtbl of ID3D11ShaderResourceView,
 					pub trait ID3D11ShaderResourceViewT
 				{
-					fn GetDesc(pDesc: *mut D3D11_SHADER_RESOURCE_VIEW_DESC) -> c_void,
+					fn GetDesc(pDesc: *mut D3D11_SHADER_RESOURCE_VIEW_DESC) -> (),
 				}
 				pub ID3D11UnorderedAccessViewVtbl of ID3D11UnorderedAccessView,
 					pub trait ID3D11UnorderedAccessViewT
 				{
-					fn GetDesc(pDesc: *mut D3D11_UNORDERED_ACCESS_VIEW_DESC) -> c_void,
+					fn GetDesc(pDesc: *mut D3D11_UNORDERED_ACCESS_VIEW_DESC) -> (),
 				}
 			]
 		]

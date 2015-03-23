@@ -26,6 +26,8 @@
 //! [Common Version Interfaces, MSDN]
 //! (https://msdn.microsoft.com/en-us/library/windows/desktop/ff728662(v=vs.85).aspx)
 
+#![allow(non_snake_case)]
+
 use libc::c_void;
 use winapi::{ LPVOID, SIZE_T, LPCVOID, LPCSTR, HRESULT,
 	REFIID, ULONG, INT, BOOL, LPCWSTR,

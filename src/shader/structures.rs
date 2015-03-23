@@ -26,6 +26,8 @@
 //! [Shader Structures, MSDN]
 //! (https://msdn.microsoft.com/en-us/library/windows/desktop/ff476176(v=vs.85).aspx)
 
+#![allow(non_snake_case, non_camel_case_types)]
+
 use winapi::{ UINT, UINT8, UINT16, UINT64, INT, BOOL,
 	BYTE, LPCSTR, LPVOID };
 

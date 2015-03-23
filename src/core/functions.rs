@@ -30,8 +30,7 @@ use winapi::{ UINT, HRESULT, HMODULE };
 use dxgi::{ IDXGIAdapter, IDXGISwapChain, DXGI_SWAP_CHAIN_DESC };
 
 use core::interfaces::{ ID3D11Device, ID3D11DeviceContext };
-
-// use common_version::enumerations::*;
+use common_version::enumerations::{ D3D_DRIVER_TYPE, D3D_FEATURE_LEVEL };
 
 #[link(name="d3d11")]
 extern "C" {

@@ -30,5 +30,7 @@
 //! (https://msdn.microsoft.com/en-us/library/windows/desktop/ff728660(v=vs.85).aspx)
 
 pub use self::enumerations::*;
+pub use self::structures::*;
 
 pub mod enumerations;
+pub mod structures;

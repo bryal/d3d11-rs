@@ -20,34 +20,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-//! Rust bindings for D3D11
+//! Common Version structures provided
+//!
+//! # References
+//! [Common Version Structures, MSDN]
+//! (https://msdn.microsoft.com/en-us/library/windows/desktop/ff728663(v=vs.85).aspx)
 
-#![cfg(windows)]
-#![feature(libc)]
+#![allow(non_snake_case, non_camel_case_types)]
 
-extern crate libc;
-extern crate winapi;
-#[macro_use]
-extern crate dxgi;
+use winapi::LPCSTR;
 
-pub use core::enumerations::*;
-pub use core::structures::*;
-pub use core::functions::*;
-pub use core::interfaces::*;
-
-pub use common_version::enumerations::*;
-pub use common_version::structures::*;
-
-pub use resource::enumerations::*;
-pub use resource::structures::*;
-
-pub use shader::enumerations::*;
-pub use shader::structures::*;
-
-pub mod core;
-pub mod common_version;
-pub mod resource;
-pub mod shader;
-
-#[cfg(test)]
-mod test;
+#[repr(C)] pub struct D3D_SHADER_MACRO {
+	Name: LPCSTR,
+	Definition: LPCSTR,
+}

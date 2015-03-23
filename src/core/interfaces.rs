@@ -41,6 +41,7 @@ use core::structures::{ D3D11_SAMPLER_DESC, D3D11_INPUT_ELEMENT_DESC,
 	D3D11_QUERY_DESC, D3D11_BLEND_DESC };
 use core::enumerations::{ D3D11_DEVICE_CONTEXT_TYPE, D3D11_FEATURE,D3D11_COUNTER_TYPE,
 	D3D11_PRIMITIVE_TOPOLOGY };
+use common_version::enumerations::{ D3D_DRIVER_TYPE, D3D_FEATURE_LEVEL };
 use resource::enumerations::{ D3D11_MAP };
 use resource::structures::{ D3D11_BUFFER_DESC, D3D11_SHADER_RESOURCE_VIEW_DESC,
 	D3D11_SUBRESOURCE_DATA, D3D11_UNORDERED_ACCESS_VIEW_DESC,
@@ -54,7 +55,6 @@ use resource::interfaces::{ ID3D11View, ID3D11Buffer,
 	ID3D11DepthStencilView, ID3D11RenderTargetView,
 	ID3D11Texture1D, ID3D11Texture2D,
 	ID3D11Texture3D, ID3D11Resource };
-// use common_version::enumerations::*;
 
 #[repr(C)] pub struct ID3D11Asynchronous { pub vtable: *mut ID3D11AsynchronousVtbl }
 #[repr(C)] pub struct ID3D11BlendState { pub vtable: *mut ID3D11BlendStateVtbl }

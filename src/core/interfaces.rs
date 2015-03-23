@@ -49,12 +49,17 @@ use resource::structures::{ D3D11_BUFFER_DESC, D3D11_SHADER_RESOURCE_VIEW_DESC,
 	D3D11_TEXTURE1D_DESC, D3D11_TEXTURE2D_DESC,
 	D3D11_PACKED_MIP_DESC, D3D11_TILE_SHAPE,
 	D3D11_TILED_RESOURCE_COORDINATE, D3D11_TILE_REGION_SIZE,
-	D3D11_MAPPED_SUBRESOURCE, D3D11_TEXTURE3D_DESC };
+	D3D11_MAPPED_SUBRESOURCE, D3D11_TEXTURE3D_DESC,
+	D3D11_SUBRESOURCE_TILING };
 use resource::interfaces::{ ID3D11View, ID3D11Buffer,
 	ID3D11UnorderedAccessView, ID3D11ShaderResourceView,
 	ID3D11DepthStencilView, ID3D11RenderTargetView,
 	ID3D11Texture1D, ID3D11Texture2D,
 	ID3D11Texture3D, ID3D11Resource };
+use shader::interfaces::{ ID3D11ClassInstance, ID3D11PixelShader,
+	ID3D11VertexShader, ID3D11GeometryShader,
+	ID3D11HullShader, ID3D11DomainShader,
+	ID3D11ComputeShader, ID3D11ClassLinkage };
 
 #[repr(C)] pub struct ID3D11Asynchronous { pub vtable: *mut ID3D11AsynchronousVtbl }
 #[repr(C)] pub struct ID3D11BlendState { pub vtable: *mut ID3D11BlendStateVtbl }

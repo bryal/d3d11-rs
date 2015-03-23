@@ -36,7 +36,7 @@ use common_version::enumerations::{ D3D_INCLUDE_TYPE };
 
 type ID3DBlob = ID3D10Blob;
 
-#[repr(C)] pub struct ID3D10Blob { pub vtable: *mut ID3DBlobVtbl }
+#[repr(C)] pub struct ID3D10Blob { pub vtable: *mut ID3D10BlobVtbl }
 #[repr(C)] pub struct ID3DInclude { pub vtable: *mut ID3DIncludeVtbl }
 #[repr(C)] pub struct ID3DUserDefinedAnnotation { pub vtable: *mut ID3DUserDefinedAnnotationVtbl }
 

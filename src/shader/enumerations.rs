@@ -26,7 +26,7 @@
 //! [D3D11 Shader Enumerations, MSDN]
 //! (https://msdn.microsoft.com/en-us/library/windows/desktop/ff476175(v=vs.85).aspx)
 
-use  common_version::{ D3D_CBUFFER_TYPE, D3D_RESOURCE_RETURN_TYPE,
+use  common_version::enumerations::{ D3D_CBUFFER_TYPE, D3D_RESOURCE_RETURN_TYPE,
 	D3D_TESSELLATOR_DOMAIN, D3D_TESSELLATOR_PARTITIONING,
 	D3D_TESSELLATOR_OUTPUT_PRIMITIVE };
 

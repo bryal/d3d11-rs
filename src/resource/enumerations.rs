@@ -26,7 +26,7 @@
 //! [D3D11 Resource Enumerations, MSDN]
 //! (https://msdn.microsoft.com/en-us/library/windows/desktop/ff476170(v=vs.85).aspx)
 
-use common_version::D3D_SRV_DIMENSION;
+use common_version::enumerations::D3D_SRV_DIMENSION;
 
 pub type D3D11_SRV_DIMENSION = D3D_SRV_DIMENSION;
 

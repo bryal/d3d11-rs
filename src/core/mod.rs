@@ -26,11 +26,6 @@
 //! [Core Reference, MSDN]
 //! (https://msdn.microsoft.com/en-us/library/windows/desktop/ff476151(v=vs.85).aspx)
 
-pub use self::enumerations::*;
-pub use self::structures::*;
-pub use self::functions::*;
-pub use self::interfaces::*;
-
 pub mod enumerations;
 pub mod structures;
 pub mod functions;

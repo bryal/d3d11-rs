@@ -37,12 +37,14 @@ pub use core::interfaces::*;
 
 pub use common_version::enumerations::*;
 pub use common_version::structures::*;
+pub use common_version::interfaces::*;
 
 pub use resource::enumerations::*;
 pub use resource::structures::*;
 
 pub use shader::enumerations::*;
 pub use shader::structures::*;
+pub use shader::interfaces::*;
 
 pub mod core;
 pub mod common_version;

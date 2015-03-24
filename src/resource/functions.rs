@@ -20,41 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-//! Rust bindings for D3D11
+//! Resource functions provided by D3D11
+//!
+//! # References
+//! [Resource Functions, MSDN]
+//! (https://msdn.microsoft.com/en-us/library/windows/desktop/ff476171(v=vs.85).aspx)
 
-#![cfg(windows)]
-#![feature(libc)]
-
-extern crate libc;
-extern crate winapi;
-#[macro_use]
-extern crate dxgi;
-
-pub use core::enumerations::*;
-pub use core::structures::*;
-pub use core::functions::*;
-pub use core::interfaces::*;
-
-pub use common_version::enumerations::*;
-pub use common_version::structures::*;
-pub use common_version::interfaces::*;
-
-pub use resource::enumerations::*;
-pub use resource::structures::*;
-pub use resource::interfaces::*;
-pub use resource::functions::*;
-
-pub use shader::enumerations::*;
-pub use shader::structures::*;
-pub use shader::interfaces::*;
-
-pub use constants::*;
-
-pub mod core;
-pub mod common_version;
-pub mod resource;
-pub mod shader;
-pub mod constants;
-
-#[cfg(test)]
-mod test;
+extern "C" {
+	fn D3D11CalcSubresource(mip_slice: UINT, array_slice: UINT, mip_levels: UINT) -> UINT;
+}

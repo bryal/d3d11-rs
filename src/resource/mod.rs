@@ -29,3 +29,4 @@
 pub mod enumerations;
 pub mod structures;
 pub mod interfaces;
+pub mod functions;

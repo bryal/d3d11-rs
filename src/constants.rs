@@ -24,7 +24,9 @@
 
 #![allow(non_upper_case_globals)]
 
-use winapi::GUID;
+use winapi::{ GUID, UINT };
+
+pub const D3D11_SDK_VERSION: UINT = 7;
 
 // d3d11.h
 

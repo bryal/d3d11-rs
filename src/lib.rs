@@ -46,10 +46,13 @@ pub use shader::enumerations::*;
 pub use shader::structures::*;
 pub use shader::interfaces::*;
 
+pub use constants::*;
+
 pub mod core;
 pub mod common_version;
 pub mod resource;
 pub mod shader;
+pub mod constants;
 
 #[cfg(test)]
 mod test;

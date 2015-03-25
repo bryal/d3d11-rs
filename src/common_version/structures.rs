@@ -31,6 +31,6 @@
 use winapi::LPCSTR;
 
 #[repr(C)] pub struct D3D_SHADER_MACRO {
-	Name: LPCSTR,
-	Definition: LPCSTR,
+	pub Name: LPCSTR,
+	pub Definition: LPCSTR,
 }

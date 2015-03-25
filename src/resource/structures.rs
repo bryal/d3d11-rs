@@ -36,222 +36,222 @@ use dxgi::{ DXGI_FORMAT, DXGI_SAMPLE_DESC };
 use resource::enumerations::*;
 
 #[repr(C)] pub struct D3D11_BUFFER_DESC {
-	ByteWidth: UINT,
-	Usage: D3D11_USAGE,
-	BindFlags: UINT,
-	CPUAccessFlags: UINT,
-	MiscFlags: UINT,
-	StructureByteStride: UINT,
+	pub ByteWidth: UINT,
+	pub Usage: D3D11_USAGE,
+	pub BindFlags: UINT,
+	pub CPUAccessFlags: UINT,
+	pub MiscFlags: UINT,
+	pub StructureByteStride: UINT,
 }
 #[repr(C)] pub struct D3D11_BUFFER_RTV {
-	union_0: UINT,
-	union_1: UINT,
+	pub union_0: UINT,
+	pub union_1: UINT,
 }
 #[repr(C)] pub struct D3D11_BUFFER_SRV {
-	union_0: UINT,
-	union_1: UINT,
+	pub union_0: UINT,
+	pub union_1: UINT,
 }
 #[repr(C)] pub struct D3D11_BUFFER_UAV {
-	FirstElement: UINT,
-	NumElements: UINT,
-	Flags: UINT,
+	pub FirstElement: UINT,
+	pub NumElements: UINT,
+	pub Flags: UINT,
 }
 #[repr(C)] pub struct D3D11_BUFFEREX_SRV {
-	FirstElement: UINT,
-	NumElements: UINT,
-	Flags: UINT,
+	pub FirstElement: UINT,
+	pub NumElements: UINT,
+	pub Flags: UINT,
 }
 #[repr(C)] pub struct D3D11_DEPTH_STENCIL_VIEW_DESC {
-	Format: DXGI_FORMAT,
-	ViewDimension: D3D11_DSV_DIMENSION,
-	Flags: UINT,
-	union_0: D3D11_TEX1D_ARRAY_DSV,
+	pub Format: DXGI_FORMAT,
+	pub ViewDimension: D3D11_DSV_DIMENSION,
+	pub Flags: UINT,
+	pub union_0: D3D11_TEX1D_ARRAY_DSV,
 }
 #[repr(C)] pub struct D3D11_MAPPED_SUBRESOURCE {
-	data: *mut c_void,
-	RowPitch: UINT,
-	DepthPitch: UINT,
+	pub data: *mut c_void,
+	pub RowPitch: UINT,
+	pub DepthPitch: UINT,
 }
 #[repr(C)] pub struct D3D11_PACKED_MIP_DESC {
-	NumStandardMips: UINT8,
-	NumPackedMips: UINT8,
-	NumTilesForPackedMips: UINT,
-	StartTileIndexInOverallResource: UINT,
+	pub NumStandardMips: UINT8,
+	pub NumPackedMips: UINT8,
+	pub NumTilesForPackedMips: UINT,
+	pub StartTileIndexInOverallResource: UINT,
 }
 #[repr(C)] pub struct D3D11_RENDER_TARGET_VIEW_DESC {
-	Format: DXGI_FORMAT,
-	ViewDimension: D3D11_RTV_DIMENSION,
-	union_0: D3D11_TEX1D_ARRAY_RTV,
+	pub Format: DXGI_FORMAT,
+	pub ViewDimension: D3D11_RTV_DIMENSION,
+	pub union_0: D3D11_TEX1D_ARRAY_RTV,
 }
 #[repr(C)] pub struct D3D11_SHADER_RESOURCE_VIEW_DESC {
-	Format: DXGI_FORMAT,
-	ViewDimension: D3D11_SRV_DIMENSION,
-	union_0: D3D11_TEX1D_ARRAY_SRV,
+	pub Format: DXGI_FORMAT,
+	pub ViewDimension: D3D11_SRV_DIMENSION,
+	pub union_0: D3D11_TEX1D_ARRAY_SRV,
 }
 #[repr(C)] pub struct D3D11_SUBRESOURCE_DATA {
-	pSysMem: *const c_void,
-	SysMemPitch: UINT,
-	SysMemSlicePitch: UINT,
+	pub pSysMem: *const c_void,
+	pub SysMemPitch: UINT,
+	pub SysMemSlicePitch: UINT,
 }
 #[repr(C)] pub struct D3D11_SUBRESOURCE_TILING {
-	WidthInTiles: UINT,
-	HeightInTiles: UINT16,
-	DepthInTiles: UINT16,
-	StartTileIndexInOverallResource: UINT,
+	pub WidthInTiles: UINT,
+	pub HeightInTiles: UINT16,
+	pub DepthInTiles: UINT16,
+	pub StartTileIndexInOverallResource: UINT,
 }
 #[repr(C)] pub struct D3D11_TEX1D_ARRAY_DSV {
-	MipSlice: UINT,
-	FirstArraySlice: UINT,
-	ArraySize: UINT,
+	pub MipSlice: UINT,
+	pub FirstArraySlice: UINT,
+	pub ArraySize: UINT,
 }
 #[repr(C)] pub struct D3D11_TEX1D_ARRAY_RTV {
-	MipSlice: UINT,
-	FirstArraySlice: UINT,
-	ArraySize: UINT,
+	pub MipSlice: UINT,
+	pub FirstArraySlice: UINT,
+	pub ArraySize: UINT,
 }
 #[repr(C)] pub struct D3D11_TEX1D_ARRAY_SRV {
-	MostDetailedMip: UINT,
-	MipLevels: UINT,
-	FirstArraySlice: UINT,
-	ArraySize: UINT,
+	pub MostDetailedMip: UINT,
+	pub MipLevels: UINT,
+	pub FirstArraySlice: UINT,
+	pub ArraySize: UINT,
 }
 #[repr(C)] pub struct D3D11_TEX1D_ARRAY_UAV {
-	MipSlice: UINT,
-	FirstArraySlice: UINT,
-	ArraySize: UINT,
+	pub MipSlice: UINT,
+	pub FirstArraySlice: UINT,
+	pub ArraySize: UINT,
 }
 #[repr(C)] pub struct D3D11_TEX1D_DSV {
-	MipSlice: UINT,
+	pub MipSlice: UINT,
 }
 #[repr(C)] pub struct D3D11_TEX1D_RTV {
-	MipSlice: UINT,
+	pub MipSlice: UINT,
 }
 #[repr(C)] pub struct D3D11_TEX1D_SRV {
-	MostDetailedMip: UINT,
-	MipLevels: UINT,
+	pub MostDetailedMip: UINT,
+	pub MipLevels: UINT,
 }
 #[repr(C)] pub struct D3D11_TEX1D_UAV {
-	MipSlice: UINT,
+	pub MipSlice: UINT,
 }
 #[repr(C)] pub struct D3D11_TEX2D_ARRAY_DSV {
-	MipSlice: UINT,
-	FirstArraySlice: UINT,
-	ArraySize: UINT,
+	pub MipSlice: UINT,
+	pub FirstArraySlice: UINT,
+	pub ArraySize: UINT,
 }
 #[repr(C)] pub struct D3D11_TEX2D_ARRAY_RTV {
-	MipSlice: UINT,
-	FirstArraySlice: UINT,
-	ArraySize: UINT,
+	pub MipSlice: UINT,
+	pub FirstArraySlice: UINT,
+	pub ArraySize: UINT,
 }
 #[repr(C)] pub struct D3D11_TEX2D_ARRAY_SRV {
-	MostDetailedMip: UINT,
-	MipLevels: UINT,
-	FirstArraySlice: UINT,
-	ArraySize: UINT,
+	pub MostDetailedMip: UINT,
+	pub MipLevels: UINT,
+	pub FirstArraySlice: UINT,
+	pub ArraySize: UINT,
 }
 #[repr(C)] pub struct D3D11_TEX2D_ARRAY_UAV {
-	MipSlice: UINT,
-	FirstArraySlice: UINT,
-	ArraySize: UINT,
+	pub MipSlice: UINT,
+	pub FirstArraySlice: UINT,
+	pub ArraySize: UINT,
 }
 #[repr(C)] pub struct D3D11_TEX2D_DSV {
-	MipSlice: UINT,
+	pub MipSlice: UINT,
 }
 #[repr(C)] pub struct D3D11_TEX2D_RTV {
-	MipSlice: UINT,
+	pub MipSlice: UINT,
 }
 #[repr(C)] pub struct D3D11_TEX2D_UAV {
-	MipSlice: UINT,
+	pub MipSlice: UINT,
 }
 #[repr(C)] pub struct D3D11_TEX2DMS_ARRAY_DSV {
-	FirstArraySlice: UINT,
-	ArraySize: UINT,
+	pub FirstArraySlice: UINT,
+	pub ArraySize: UINT,
 }
 #[repr(C)] pub struct D3D11_TEX2DMS_ARRAY_RTV {
-	FirstArraySlice: UINT,
-	ArraySize: UINT,
+	pub FirstArraySlice: UINT,
+	pub ArraySize: UINT,
 }
 #[repr(C)] pub struct D3D11_TEX2DMS_ARRAY_SRV {
-	FirstArraySlice: UINT,
-	ArraySize: UINT,
+	pub FirstArraySlice: UINT,
+	pub ArraySize: UINT,
 }
 #[repr(C)] pub struct D3D11_TEX3D_RTV {
-	MipSlice: UINT,
-	FirstWSlice: UINT,
-	WSize: UINT,
+	pub MipSlice: UINT,
+	pub FirstWSlice: UINT,
+	pub WSize: UINT,
 }
 #[repr(C)] pub struct D3D11_TEX3D_SRV {
-	MostDetailedMip: UINT,
-	MipLevels: UINT,
+	pub MostDetailedMip: UINT,
+	pub MipLevels: UINT,
 }
 #[repr(C)] pub struct D3D11_TEX3D_UAV {
-	MipSlice: UINT,
-	FirstWSlice: UINT,
-	WSize: UINT,
+	pub MipSlice: UINT,
+	pub FirstWSlice: UINT,
+	pub WSize: UINT,
 }
 #[repr(C)] pub struct D3D11_TEXCUBE_ARRAY_SRV {
-	MostDetailedMip: UINT,
-	MipLevels: UINT,
-	First2DArrayFace: UINT,
-	NumCubes: UINT,
+	pub MostDetailedMip: UINT,
+	pub MipLevels: UINT,
+	pub First2DArrayFace: UINT,
+	pub NumCubes: UINT,
 }
 #[repr(C)] pub struct D3D11_TEXCUBE_SRV {
-	MostDetailedMip: UINT,
-	MipLevels: UINT,
+	pub MostDetailedMip: UINT,
+	pub MipLevels: UINT,
 }
 #[repr(C)] pub struct D3D11_TEXTURE1D_DESC {
-	Width: UINT,
-	MipLevels: UINT,
-	ArraySize: UINT,
-	Format: DXGI_FORMAT,
-	Usage: D3D11_USAGE,
-	BindFlags: UINT,
-	CPUAccessFlags: UINT,
-	MiscFlags: UINT,
+	pub Width: UINT,
+	pub MipLevels: UINT,
+	pub ArraySize: UINT,
+	pub Format: DXGI_FORMAT,
+	pub Usage: D3D11_USAGE,
+	pub BindFlags: UINT,
+	pub CPUAccessFlags: UINT,
+	pub MiscFlags: UINT,
 }
 #[repr(C)] pub struct D3D11_TEXTURE2D_DESC {
-	Width: UINT,
-	Height: UINT,
-	MipLevels: UINT,
-	ArraySize: UINT,
-	Format: DXGI_FORMAT,
-	SampleDesc: DXGI_SAMPLE_DESC,
-	Usage: D3D11_USAGE,
-	BindFlags: UINT,
-	CPUAccessFlags: UINT,
-	MiscFlags: UINT,
+	pub Width: UINT,
+	pub Height: UINT,
+	pub MipLevels: UINT,
+	pub ArraySize: UINT,
+	pub Format: DXGI_FORMAT,
+	pub SampleDesc: DXGI_SAMPLE_DESC,
+	pub Usage: D3D11_USAGE,
+	pub BindFlags: UINT,
+	pub CPUAccessFlags: UINT,
+	pub MiscFlags: UINT,
 }
 #[repr(C)] pub struct D3D11_TEXTURE3D_DESC {
-	Width: UINT,
-	Height: UINT,
-	Depth: UINT,
-	MipLevels: UINT,
-	Format: DXGI_FORMAT,
-	Usage: D3D11_USAGE,
-	BindFlags: UINT,
-	CPUAccessFlags: UINT,
-	MiscFlags: UINT,
+	pub Width: UINT,
+	pub Height: UINT,
+	pub Depth: UINT,
+	pub MipLevels: UINT,
+	pub Format: DXGI_FORMAT,
+	pub Usage: D3D11_USAGE,
+	pub BindFlags: UINT,
+	pub CPUAccessFlags: UINT,
+	pub MiscFlags: UINT,
 }
 #[repr(C)] pub struct D3D11_TILE_REGION_SIZE {
-	NumTiles: UINT,
-	bUseBox: BOOL,
-	Width: UINT,
-	Height: UINT16,
-	Depth: UINT16,
+	pub NumTiles: UINT,
+	pub bUseBox: BOOL,
+	pub Width: UINT,
+	pub Height: UINT16,
+	pub Depth: UINT16,
 }
 #[repr(C)] pub struct D3D11_TILED_RESOURCE_COORDINATE {
-	X: UINT,
-	Y: UINT,
-	Z: UINT,
-	Subresource: UINT,
+	pub X: UINT,
+	pub Y: UINT,
+	pub Z: UINT,
+	pub Subresource: UINT,
 }
 #[repr(C)] pub struct D3D11_TILE_SHAPE {
-	WidthInTexels: UINT,
-	HeightInTexels: UINT,
-	DepthInTexels: UINT,
+	pub WidthInTexels: UINT,
+	pub HeightInTexels: UINT,
+	pub DepthInTexels: UINT,
 }
 #[repr(C)] pub struct D3D11_UNORDERED_ACCESS_VIEW_DESC {
-	Format: DXGI_FORMAT,
-	ViewDimension: D3D11_UAV_DIMENSION,
-	union_0: D3D11_BUFFER_UAV,
+	pub Format: DXGI_FORMAT,
+	pub ViewDimension: D3D11_UAV_DIMENSION,
+	pub union_0: D3D11_BUFFER_UAV,
 }

@@ -39,243 +39,231 @@ pub type D3D11_TRACE_COMPONENT_MASK = UINT8;
 pub type D3D11_TRACE_MISC_OPERATIONS_MASK = UINT16;
 
 #[repr(C)] pub struct D3D11_CLASS_INSTANCE_DESC {
-	InstanceId: UINT,
-	InstanceIndex: UINT,
-	TypeId: UINT,
-	ConstantBuffer: UINT,
-	BaseConstantBufferOffset: UINT,
-	BaseTexture: UINT,
-	BaseSampler: UINT,
-	Created: BOOL,
+	pub InstanceId: UINT,
+	pub InstanceIndex: UINT,
+	pub TypeId: UINT,
+	pub ConstantBuffer: UINT,
+	pub BaseConstantBufferOffset: UINT,
+	pub BaseTexture: UINT,
+	pub BaseSampler: UINT,
+	pub Created: BOOL,
 }
 #[repr(C)] pub struct D3D11_COMPUTE_SHADER_TRACE_DESC {
-	Invocation: UINT64,
-	ThreadIDInGroup: [UINT; 3],
-	ThreadGroupID: [UINT; 3],
+	pub Invocation: UINT64,
+	pub ThreadIDInGroup: [UINT; 3],
+	pub ThreadGroupID: [UINT; 3],
 }
 #[repr(C)] pub struct D3D11_DOMAIN_SHADER_TRACE_DESC {
-	Invocation: UINT64,
+	pub Invocation: UINT64,
 }
 #[repr(C)] pub struct D3D11_FUNCTION_DESC {
-	Version: UINT,                     // Shader version
-	Creator: LPCSTR,                     // Creator string
-	Flags: UINT,                       // Shader compilation/parse flags
-	
-	ConstantBuffers: UINT,             // Number of constant buffers
-	BoundResources: UINT,              // Number of bound resources
-
-	InstructionCount: UINT,            // Number of emitted instructions
-	TempRegisterCount: UINT,           // Number of temporary registers used 
-	TempArrayCount: UINT,              // Number of temporary arrays used
-	DefCount: UINT,                    // Number of constant defines 
-	DclCount: UINT,                    // Number of declarations (input + output)
-	TextureNormalInstructions: UINT,   // Number of non-categorized texture instructions
-	TextureLoadInstructions: UINT,     // Number of texture load instructions
-	TextureCompInstructions: UINT,     // Number of texture comparison instructions
-	TextureBiasInstructions: UINT,     // Number of texture bias instructions
-	TextureGradientInstructions: UINT, // Number of texture gradient instructions
-	FloatInstructionCount: UINT,       // Number of floating point arithmetic instructions used
-	IntInstructionCount: UINT,         // Number of signed integer arithmetic instructions used
-	UintInstructionCount: UINT,        // Number of unsigned integer arithmetic instructions used
-	StaticFlowControlCount: UINT,      // Number of static flow control instructions used
-	DynamicFlowControlCount: UINT,     // Number of dynamic flow control instructions used
-	MacroInstructionCount: UINT,       // Number of macro instructions used
-	ArrayInstructionCount: UINT,       // Number of array instructions used
-	MovInstructionCount: UINT,         // Number of mov instructions used
-	MovcInstructionCount: UINT,        // Number of movc instructions used
-	ConversionInstructionCount: UINT,  // Number of type conversion instructions used
-	BitwiseInstructionCount: UINT,     // Number of bitwise arithmetic instructions used
-	MinFeatureLevel: D3D_FEATURE_LEVEL,             // Min target of the function byte code
-	RequiredFeatureFlags: UINT64,        // Required feature flags
-
-	Name: LPCSTR,                        // Function name
-	FunctionParameterCount: INT,      // Number of logical parameters in the function signature (not including return)
-	HasReturn: BOOL,                   // TRUE, if function returns a value, false - it is a subroutine
-	Has10Level9VertexShader: BOOL,     // TRUE, if there is a 10L9 VS blob
-	Has10Level9PixelShader: BOOL,      // TRUE, if there is a 10L9 PS blob
+	pub Version: UINT,
+	pub Creator: LPCSTR,
+	pub Flags: UINT,
+	pub ConstantBuffers: UINT,
+	pub BoundResources: UINT,
+	pub InstructionCount: UINT,
+	pub TempRegisterCount: UINT,
+	pub TempArrayCount: UINT,
+	pub DefCount: UINT,
+	pub DclCount: UINT,
+	pub TextureNormalInstructions: UINT,
+	pub TextureLoadInstructions: UINT,
+	pub TextureCompInstructions: UINT,
+	pub TextureBiasInstructions: UINT,
+	pub TextureGradientInstructions: UINT,
+	pub FloatInstructionCount: UINT,
+	pub IntInstructionCount: UINT,
+	pub UintInstructionCount: UINT,
+	pub StaticFlowControlCount: UINT,
+	pub DynamicFlowControlCount: UINT,
+	pub MacroInstructionCount: UINT,
+	pub ArrayInstructionCount: UINT,
+	pub MovInstructionCount: UINT,
+	pub MovcInstructionCount: UINT,
+	pub ConversionInstructionCount: UINT,
+	pub BitwiseInstructionCount: UINT,
+	pub MinFeatureLevel: D3D_FEATURE_LEVEL,
+	pub RequiredFeatureFlags: UINT64,
+	pub Name: LPCSTR,
+	pub FunctionParameterCount: INT,
+	pub HasReturn: BOOL,
+	pub Has10Level9VertexShader: BOOL,
+	pub Has10Level9PixelShader: BOOL,
 }
 #[repr(C)] pub struct D3D11_GEOMETRY_SHADER_TRACE_DESC {
-	Invocation: UINT64,
+	pub Invocation: UINT64,
 }
 #[repr(C)] pub struct D3D11_HULL_SHADER_TRACE_DESC {
-	Invocation: UINT64,
+	pub Invocation: UINT64,
 }
 #[repr(C)] pub struct D3D11_LIBRARY_DESC {
-	Creator: LPCSTR,           // The name of the originator of the library.
-	Flags: UINT,             // Compilation flags.
-	FunctionCount: UINT,     // Number of functions exported from the library.
+	pub Creator: LPCSTR,
+	pub Flags: UINT,
+	pub FunctionCount: UINT,
 }
 #[repr(C)] pub struct D3D11_PARAMETER_DESC {
-	Name: LPCSTR,               // Parameter name.
-	SemanticName: LPCSTR,       // Parameter semantic name (+index).
-	Type: D3D_SHADER_VARIABLE_TYPE,               // Element type.
-	Class: D3D_SHADER_VARIABLE_CLASS,              // Scalar/Vector/Matrix.
-	Rows: UINT,               // Rows are for matrix parameters.
-	Columns: UINT,            // Components or Columns in matrix.
-	InterpolationMode: D3D_INTERPOLATION_MODE,  // Interpolation mode.
-	Flags: D3D_PARAMETER_FLAGS,              // Parameter modifiers.
-
-	FirstInRegister: UINT,    // The first input register for this parameter.
-	FirstInComponent: UINT,   // The first input register component for this parameter.
-	FirstOutRegister: UINT,   // The first output register for this parameter.
-	FirstOutComponent: UINT,  // The first output register component for this parameter.
+	pub Name: LPCSTR,
+	pub SemanticName: LPCSTR,
+	pub Type: D3D_SHADER_VARIABLE_TYPE,
+	pub Class: D3D_SHADER_VARIABLE_CLASS,
+	pub Rows: UINT,
+	pub Columns: UINT,
+	pub InterpolationMode: D3D_INTERPOLATION_MODE,
+	pub Flags: D3D_PARAMETER_FLAGS,
+	pub FirstInRegister: UINT,
+	pub FirstInComponent: UINT,
+	pub FirstOutRegister: UINT,
+	pub FirstOutComponent: UINT,
 }
 #[repr(C)] pub struct D3D11_PIXEL_SHADER_TRACE_DESC {
-	Invocation: UINT64,
-	X: INT,
-	Y: INT,
-	SampleMask: UINT64,
+	pub Invocation: UINT64,
+	pub X: INT,
+	pub Y: INT,
+	pub SampleMask: UINT64,
 }
 #[repr(C)] pub struct D3D11_SHADER_BUFFER_DESC {
-	Name: LPCSTR,           // Name of the constant buffer
-	Type: D3D_CBUFFER_TYPE,           // Indicates type of buffer content
-	Variables: UINT,      // Number of member variables
-	Size: UINT,           // Size of CB (in bytes)
-	uFlags: UINT,         // Buffer description flags
+	pub Name: LPCSTR,
+	pub Type: D3D_CBUFFER_TYPE,
+	pub Variables: UINT,
+	pub Size: UINT,
+	pub uFlags: UINT,
 }
 #[repr(C)] pub struct D3D11_SHADER_DESC {
-	Version: UINT,                     // Shader version
-	Creator: LPCSTR,                     // Creator string
-	Flags: UINT,                       // Shader compilation/parse flags
-	
-	ConstantBuffers: UINT,             // Number of constant buffers
-	BoundResources: UINT,              // Number of bound resources
-	InputParameters: UINT,             // Number of parameters in the input signature
-	OutputParameters: UINT,            // Number of parameters in the output signature
-
-	InstructionCount: UINT,            // Number of emitted instructions
-	TempRegisterCount: UINT,           // Number of temporary registers used 
-	TempArrayCount: UINT,              // Number of temporary arrays used
-	DefCount: UINT,                    // Number of constant defines 
-	DclCount: UINT,                    // Number of declarations (input + output)
-	TextureNormalInstructions: UINT,   // Number of non-categorized texture instructions
-	TextureLoadInstructions: UINT,     // Number of texture load instructions
-	TextureCompInstructions: UINT,     // Number of texture comparison instructions
-	TextureBiasInstructions: UINT,     // Number of texture bias instructions
-	TextureGradientInstructions: UINT, // Number of texture gradient instructions
-	FloatInstructionCount: UINT,       // Number of floating point arithmetic instructions used
-	IntInstructionCount: UINT,         // Number of signed integer arithmetic instructions used
-	UintInstructionCount: UINT,        // Number of unsigned integer arithmetic instructions used
-	StaticFlowControlCount: UINT,      // Number of static flow control instructions used
-	DynamicFlowControlCount: UINT,     // Number of dynamic flow control instructions used
-	MacroInstructionCount: UINT,       // Number of macro instructions used
-	ArrayInstructionCount: UINT,       // Number of array instructions used
-	CutInstructionCount: UINT,         // Number of cut instructions used
-	EmitInstructionCount: UINT,        // Number of emit instructions used
-	GSOutputTopology: D3D_PRIMITIVE_TOPOLOGY,            // Geometry shader output topology
-	GSMaxOutputVertexCount: UINT,      // Geometry shader maximum output vertex count
-	InputPrimitive: D3D_PRIMITIVE,              // GS/HS input primitive
-	PatchConstantParameters: UINT,     // Number of parameters in the patch constant signature
-	cGSInstanceCount: UINT,            // Number of Geometry shader instances
-	cControlPoints: UINT,              // Number of control points in the HS->DS stage
-	HSOutputPrimitive: D3D_TESSELLATOR_OUTPUT_PRIMITIVE,  // Primitive output by the tessellator
-	HSPartitioning: D3D_TESSELLATOR_PARTITIONING,         // Partitioning mode of the tessellator
-	TessellatorDomain: D3D_TESSELLATOR_DOMAIN,           // Domain of the tessellator (quad, tri, isoline)
-	// instruction counts
-	cBarrierInstructions: UINT,                           // Number of barrier instructions in a compute shader
-	cInterlockedInstructions: UINT,                       // Number of interlocked instructions
-	cTextureStoreInstructions: UINT,                      // Number of texture writes
+	pub Version: UINT,
+	pub Creator: LPCSTR,
+	pub Flags: UINT,
+	pub ConstantBuffers: UINT,
+	pub BoundResources: UINT,
+	pub InputParameters: UINT,
+	pub OutputParameters: UINT,
+	pub InstructionCount: UINT,
+	pub TempRegisterCount: UINT,
+	pub TempArrayCount: UINT,
+	pub DefCount: UINT,
+	pub DclCount: UINT,
+	pub TextureNormalInstructions: UINT,
+	pub TextureLoadInstructions: UINT,
+	pub TextureCompInstructions: UINT,
+	pub TextureBiasInstructions: UINT,
+	pub TextureGradientInstructions: UINT,
+	pub FloatInstructionCount: UINT,
+	pub IntInstructionCount: UINT,
+	pub UintInstructionCount: UINT,
+	pub StaticFlowControlCount: UINT,
+	pub DynamicFlowControlCount: UINT,
+	pub MacroInstructionCount: UINT,
+	pub ArrayInstructionCount: UINT,
+	pub CutInstructionCount: UINT,
+	pub EmitInstructionCount: UINT,
+	pub GSOutputTopology: D3D_PRIMITIVE_TOPOLOGY,
+	pub GSMaxOutputVertexCount: UINT,
+	pub InputPrimitive: D3D_PRIMITIVE,
+	pub PatchConstantParameters: UINT,
+	pub cGSInstanceCount: UINT,
+	pub cControlPoints: UINT,
+	pub HSOutputPrimitive: D3D_TESSELLATOR_OUTPUT_PRIMITIVE,
+	pub HSPartitioning: D3D_TESSELLATOR_PARTITIONING,
+	pub TessellatorDomain: D3D_TESSELLATOR_DOMAIN,
+	pub cBarrierInstructions: UINT,
+	pub cInterlockedInstructions: UINT,
+	pub cTextureStoreInstructions: UINT,
 }
 #[repr(C)] pub struct D3D11_SHADER_INPUT_BIND_DESC
 {
-	Name: LPCSTR,           // Name of the resource
-	Type: D3D_SHADER_INPUT_TYPE,           // Type of resource (e.g. texture, cbuffer, etc.)
-	BindPoint: UINT,      // Starting bind point
-	BindCount: UINT,      // Number of contiguous bind points (for arrays)
-	
-	uFlags: UINT,         // Input binding flags
-	ReturnType: D3D_RESOURCE_RETURN_TYPE,     // Return type (if texture)
-	Dimension: D3D_SRV_DIMENSION,      // Dimension (if texture)
-	NumSamples: UINT,     // Number of samples (0 if not MS texture)
+	pub Name: LPCSTR,
+	pub Type: D3D_SHADER_INPUT_TYPE,
+	pub BindPoint: UINT,
+	pub BindCount: UINT,
+	pub uFlags: UINT,
+	pub ReturnType: D3D_RESOURCE_RETURN_TYPE,
+	pub Dimension: D3D_SRV_DIMENSION,
+	pub NumSamples: UINT,
 }
 #[repr(C)] pub struct D3D11_SHADER_TRACE_DESC {
-	Type: D3D11_SHADER_TYPE,
-	Flags: UINT,
-	union_0: D3D11_COMPUTE_SHADER_TRACE_DESC,
+	pub Type: D3D11_SHADER_TYPE,
+	pub Flags: UINT,
+	pub union_0: D3D11_COMPUTE_SHADER_TRACE_DESC,
 }
 #[repr(C)] pub struct D3D11_SHADER_TYPE_DESC
 {
-	Class: D3D_SHADER_VARIABLE_CLASS,          // Variable class (e.g. object, matrix, etc.)
-	Type: D3D_SHADER_VARIABLE_TYPE,           // Variable type (e.g. float, sampler, etc.)
-	Rows: UINT,           // Number of rows (for matrices, 1 for other numeric, 0 if not applicable)
-	Columns: UINT,        // Number of columns (for vectors & matrices, 1 for other numeric, 0 if not applicable)
-	Elements: UINT,       // Number of elements (0 if not an array)
-	Members: UINT,        // Number of members (0 if not a structure)
-	Offset: UINT,         // Offset from the start of structure (0 if not a structure member)
-	Name: LPCSTR,           // Name of type, can be NULL
+	pub Class: D3D_SHADER_VARIABLE_CLASS,
+	pub Type: D3D_SHADER_VARIABLE_TYPE,
+	pub Rows: UINT,
+	pub Columns: UINT,
+	pub Elements: UINT,
+	pub Members: UINT,
+	pub Offset: UINT,
+	pub Name: LPCSTR,
 }
 #[repr(C)] pub struct D3D11_SHADER_VARIABLE_DESC
 {
-	Name: LPCSTR,           // Name of the variable
-	StartOffset: UINT,    // Offset in constant buffer's backing store
-	Size: UINT,           // Size of variable (in bytes)
-	uFlags: UINT,         // Variable flags
-	DefaultValue: LPVOID,   // Raw pointer to default value
-	StartTexture: UINT,   // First texture index (or -1 if no textures used)
-	TextureSize: UINT,    // Number of texture slots possibly used.
-	StartSampler: UINT,   // First sampler index (or -1 if no textures used)
-	SamplerSize: UINT,    // Number of sampler slots possibly used.
+	pub Name: LPCSTR,
+	pub StartOffset: UINT,
+	pub Size: UINT,
+	pub uFlags: UINT,
+	pub DefaultValue: LPVOID,
+	pub StartTexture: UINT,
+	pub TextureSize: UINT,
+	pub StartSampler: UINT,
+	pub SamplerSize: UINT,
 }
 #[repr(C)] pub struct D3D11_SIGNATURE_PARAMETER_DESC
 {
-	SemanticName: LPCSTR,   // Name of the semantic
-	SemanticIndex: UINT,  // Index of the semantic
-	Register: UINT,       // Number of member variables
-	SystemValueType: D3D_NAME,// A predefined system value, or D3D_NAME_UNDEFINED if not applicable
-	ComponentType: D3D_REGISTER_COMPONENT_TYPE,  // Scalar type (e.g. uint, float, etc.)
-	Mask: BYTE,           // Mask to indicate which components of the register
-												// are used (combination of D3D10_COMPONENT_MASK values)
-	ReadWriteMask: BYTE,  // Mask to indicate whether a given component is 
-												// never written (if this is an output signature) or
-												// always read (if this is an input signature).
-												// (combination of D3D_MASK_* values)
-	Stream: UINT,         // Stream index
-	MinPrecision: D3D_MIN_PRECISION,   // Minimum desired interpolation precision
+	pub SemanticName: LPCSTR,
+	pub SemanticIndex: UINT,
+	pub Register: UINT,
+	pub SystemValueType: D3D_NAME,
+	pub ComponentType: D3D_REGISTER_COMPONENT_TYPE,
+	pub Mask: BYTE,
+	pub ReadWriteMask: BYTE,
+	pub Stream: UINT,
+	pub MinPrecision: D3D_MIN_PRECISION,
 }
 #[repr(C)] pub struct D3D11_TRACE_REGISTER {
-	RegType: D3D11_TRACE_REGISTER_TYPE,
-	union_0: [UINT16; 2],
-	OperandIndex: UINT8,
-	Flags: UINT8,
+	pub RegType: D3D11_TRACE_REGISTER_TYPE,
+	pub union_0: [UINT16; 2],
+	pub OperandIndex: UINT8,
+	pub Flags: UINT8,
 }
 #[repr(C)] pub struct D3D11_TRACE_STATS {
-	TraceDesc: D3D11_SHADER_TRACE_DESC,
-	NumInvocationsInStamp: UINT8,
-	TargetStampIndex: UINT8,
-	NumTraceSteps: UINT,
-	InputMask: [D3D11_TRACE_COMPONENT_MASK; 32],
-	OutputMask: [D3D11_TRACE_COMPONENT_MASK; 32],
-	NumTemps: UINT16,
-	MaxIndexableTempIndex: UINT16,
-	IndexableTempSize: [UINT16; 4096],
-	ImmediateConstantBufferSize: UINT16,
-	PixelPosition: [[UINT; 2]; 4],
-	PixelCoverageMask: [UINT64; 4],
-	PixelDiscardedMask: [UINT64; 4],
-	PixelCoverageMaskAfterShader: [UINT64; 4],
-	PixelCoverageMaskAfterA2CSampleMask: [UINT64; 4],
-	PixelCoverageMaskAfterA2CSampleMaskDepth: [UINT64; 4],
-	PixelCoverageMaskAfterA2CSampleMaskDepthStencil: [UINT64; 4],
-	PSOutputsDepth: BOOL,
-	PSOutputsMask: BOOL,
-	GSInputPrimitive: D3D11_TRACE_GS_INPUT_PRIMITIVE,
-	GSInputsPrimitiveID: BOOL,
-	HSOutputPatchConstantMask: [D3D11_TRACE_COMPONENT_MASK; 32],
-	DSInputPatchConstantMask: [D3D11_TRACE_COMPONENT_MASK; 32],
+	pub TraceDesc: D3D11_SHADER_TRACE_DESC,
+	pub NumInvocationsInStamp: UINT8,
+	pub TargetStampIndex: UINT8,
+	pub NumTraceSteps: UINT,
+	pub InputMask: [D3D11_TRACE_COMPONENT_MASK; 32],
+	pub OutputMask: [D3D11_TRACE_COMPONENT_MASK; 32],
+	pub NumTemps: UINT16,
+	pub MaxIndexableTempIndex: UINT16,
+	pub IndexableTempSize: [UINT16; 4096],
+	pub ImmediateConstantBufferSize: UINT16,
+	pub PixelPosition: [[UINT; 2]; 4],
+	pub PixelCoverageMask: [UINT64; 4],
+	pub PixelDiscardedMask: [UINT64; 4],
+	pub PixelCoverageMaskAfterShader: [UINT64; 4],
+	pub PixelCoverageMaskAfterA2CSampleMask: [UINT64; 4],
+	pub PixelCoverageMaskAfterA2CSampleMaskDepth: [UINT64; 4],
+	pub PixelCoverageMaskAfterA2CSampleMaskDepthStencil: [UINT64; 4],
+	pub PSOutputsDepth: BOOL,
+	pub PSOutputsMask: BOOL,
+	pub GSInputPrimitive: D3D11_TRACE_GS_INPUT_PRIMITIVE,
+	pub GSInputsPrimitiveID: BOOL,
+	pub HSOutputPatchConstantMask: [D3D11_TRACE_COMPONENT_MASK; 32],
+	pub DSInputPatchConstantMask: [D3D11_TRACE_COMPONENT_MASK; 32],
 }
 #[repr(C)] pub struct D3D11_TRACE_STEP {
-	ID: UINT,
-	InstructionActive: BOOL,
-	NumRegistersWritten: UINT8,
-	NumRegistersRead: UINT8,
-	MiscOperations: D3D11_TRACE_MISC_OPERATIONS_MASK,
-	OpcodeType: UINT,
-	CurrentGlobalCycle: UINT64,
+	pub ID: UINT,
+	pub InstructionActive: BOOL,
+	pub NumRegistersWritten: UINT8,
+	pub NumRegistersRead: UINT8,
+	pub MiscOperations: D3D11_TRACE_MISC_OPERATIONS_MASK,
+	pub OpcodeType: UINT,
+	pub CurrentGlobalCycle: UINT64,
 }
 #[repr(C)] pub struct D3D11_TRACE_VALUE {
-	Bits: [UINT; 4],
-	ValidMask: D3D11_TRACE_COMPONENT_MASK,
+	pub Bits: [UINT; 4],
+	pub ValidMask: D3D11_TRACE_COMPONENT_MASK,
 }
 #[repr(C)] pub struct D3D11_VERTEX_SHADER_TRACE_DESC {
-	Invocation: UINT64,
+	pub Invocation: UINT64,
 }

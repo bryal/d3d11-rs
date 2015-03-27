@@ -56,5 +56,12 @@ pub mod resource;
 pub mod shader;
 pub mod constants;
 
+pub mod interfaces {
+	pub use core::interfaces::*;
+	pub use common_version::interfaces::*;
+	pub use resource::interfaces::*;
+	pub use shader::interfaces::*;
+}
+
 #[cfg(test)]
 mod test;

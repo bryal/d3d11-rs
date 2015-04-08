@@ -13,5 +13,4 @@ build = "build.rs"
 winapi = "*"
 
 [dependencies.dxgi]
-# git = "https://github.com/bryal/dxgi-rs"
-path = "../dxgi-rs"
+git = "https://github.com/bryal/dxgi-rs"

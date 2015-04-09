@@ -28,9 +28,9 @@
 
 #![allow(non_snake_case)]
 
-use libc::c_void;
 use winapi::minwindef::*;
 use winapi::basetsd::*;
+use winapi::c_void;
 use dxgi::{ DXGI_FORMAT, DXGI_SAMPLE_DESC };
 
 use resource::enumerations::*;

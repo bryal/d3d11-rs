@@ -28,9 +28,8 @@
 
 #![allow(non_snake_case)]
 
-use libc::c_void;
 use winapi::minwindef::*;
-use winapi::{ REFGUID, HRESULT, REFIID };
+use winapi::{ REFGUID, HRESULT, REFIID, c_void };
 use dxgi::{ IUnknown, IUnknownT };
 
 use core::interfaces::{ ID3D11DeviceChildT, ID3D11Device };

@@ -23,12 +23,10 @@
 //! Rust bindings for D3D11
 
 #![cfg(windows)]
-#![feature(libc)]
 
-extern crate libc;
 extern crate winapi;
 #[macro_use]
-extern crate dxgi;
+extern crate dxgi_win as dxgi;
 
 pub use core::enumerations::*;
 pub use core::structures::*;

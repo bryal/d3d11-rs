@@ -1,16 +1,15 @@
 [package]
 name = "d3d11"
-version = "0.0.1"
+version = "0.1.0"
 authors = ["bryal <96.bryal@gmail.com>"]
-description = "Rust bindings for D3D11"
+description = "FFI bindings for D3D11"
 repository = "https://github.com/bryal/d3d11-rs"
 readme = "README.md"
+documentation = "http://bryal.github.io/d3d11-rs/d3d11_win/"
 keywords = ["Windows", "Direct3D", "DirectX", "DXGI"]
 license = "MIT"
 build = "build.rs"
 
 [dependencies]
 winapi = "*"
-
-[dependencies.dxgi]
-git = "https://github.com/bryal/dxgi-rs"
+dxgi-win = "*"

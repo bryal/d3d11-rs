@@ -28,10 +28,9 @@
 
 #![allow(non_snake_case)]
 
-use libc::c_void;
 use winapi::minwindef::*;
 use winapi::basetsd::*;
-use winapi::{ REFGUID, HRESULT, REFIID, HANDLE, LPSTR, LPCWSTR, };
+use winapi::{ REFGUID, HRESULT, REFIID, HANDLE, LPSTR, LPCWSTR, c_void };
 use dxgi::{ IUnknown, IUnknownT, DXGI_FORMAT };
 
 use core::enumerations::*;

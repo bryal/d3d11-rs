@@ -28,10 +28,9 @@
 
 #![allow(non_snake_case)]
 
-use libc::c_void;
 use winapi::minwindef::*;
 use winapi::basetsd::*;
-use winapi::{ LPCSTR, HRESULT, REFIID, LPCWSTR };
+use winapi::{ LPCSTR, HRESULT, REFIID, LPCWSTR, c_void };
 use dxgi::IUnknownT;
 
 use common_version::enumerations::D3D_INCLUDE_TYPE;

@@ -1,5 +1,5 @@
 [package]
-name = "d3d11"
+name = "d3d11-win"
 version = "0.1.0"
 authors = ["bryal <96.bryal@gmail.com>"]
 description = "FFI bindings for D3D11"

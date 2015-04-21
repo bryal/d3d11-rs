@@ -8,7 +8,6 @@ readme = "README.md"
 documentation = "http://bryal.github.io/d3d11-rs/d3d11_win/"
 keywords = ["Windows", "Direct3D", "DirectX", "DXGI"]
 license = "MIT"
-build = "build.rs"
 
 [dependencies]
 winapi = "*"

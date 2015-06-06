@@ -30,36 +30,28 @@
 
 use winapi::minwindef::*;
 use winapi::basetsd::*;
-use winapi::{ LPCSTR, HRESULT, REFIID, LPCWSTR, c_void };
-use dxgi::IUnknownT;
+use winapi::{ LPCSTR, HRESULT, LPCWSTR, GUID };
+use dxgi::{ QueryIID, IUnknown, IUnknownVtbl, COMInterface };
 
+use constants::*;
 use common_version::enumerations::D3D_INCLUDE_TYPE;
 
 pub type ID3DBlob = ID3D10Blob;
 
-#[repr(C)] pub struct ID3D10Blob { pub vtable: *mut ID3D10BlobVtbl }
-#[repr(C)] pub struct ID3DInclude { pub vtable: *mut ID3DIncludeVtbl }
-#[repr(C)] pub struct ID3DUserDefinedAnnotation { pub vtable: *mut ID3DUserDefinedAnnotationVtbl }
+com_interface!{ ID3D10Blob(ID3D10BlobVtbl): IUnknown(IUnknownVtbl) {
+	fn GetBufferPointer(&mut self) -> LPVOID,
+	fn GetBufferSize(&mut self) -> SIZE_T
+}}
+com_interface!{ ID3DUserDefinedAnnotation(ID3DUserDefinedAnnotationVtbl): IUnknown(IUnknownVtbl) {
+	fn BeginEvent(&mut self, Name: LPCWSTR) -> INT,
+	fn EndEvent(&mut self) -> INT,
+	fn SetMarker(&mut self, Name: LPCWSTR) -> (),
+	fn GetStatus(&mut self) -> BOOL
+}}
+interface!{ ID3DInclude(ID3DIncludeVtbl) {
+	fn Open(&mut self, IncludeType: D3D_INCLUDE_TYPE, pFileName: LPCSTR, pParentData: LPCVOID, ppData: *mut LPCVOID, pBytes: *mut UINT) -> HRESULT,
+	fn Close(&mut self, pData: LPCVOID) -> HRESULT
+}}
 
-c_vtable!{
-	_ of (), trait IUnknownT {
-		fn QueryInterface(riid: REFIID, object: *mut *mut c_void) -> HRESULT,
-		fn AddRef() -> ULONG,
-		fn Release() -> ULONG,
-	} with heirs [
-		pub ID3D10BlobVtbl of ID3D10Blob, pub trait ID3D10BlobT {
-			fn GetBufferPointer() -> LPVOID,
-			fn GetBufferSize() -> SIZE_T,
-		}
-		pub ID3DUserDefinedAnnotationVtbl of ID3DUserDefinedAnnotation, pub trait ID3DUserDefinedAnnotationT {
-			fn BeginEvent(Name: LPCWSTR) -> INT,
-			fn EndEvent() -> INT,
-			fn SetMarker(Name: LPCWSTR) -> (),
-			fn GetStatus() -> BOOL,
-		}
-	]
-	pub ID3DIncludeVtbl of ID3DInclude, pub trait ID3DIncludeT {
-		fn Open(IncludeType: D3D_INCLUDE_TYPE, pFileName: LPCSTR, pParentData: LPCVOID, ppData: *mut LPCVOID, pBytes: *mut UINT) -> HRESULT,
-		fn Close(pData: LPCVOID) -> HRESULT,
-	}
-}
+impl QueryIID for ID3D10Blob { fn iid() -> GUID { IID_ID3D10Blob } }
+impl QueryIID for ID3DUserDefinedAnnotation { fn iid() -> GUID { IID_ID3DUserDefinedAnnotation } }

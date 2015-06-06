@@ -29,10 +29,11 @@
 #![allow(non_snake_case)]
 
 use winapi::minwindef::*;
-use winapi::{ REFGUID, HRESULT, REFIID, c_void };
-use dxgi::{ IUnknown, IUnknownT };
+use winapi::GUID;
+use dxgi::{ IUnknown, QueryIID, COMInterface };
 
-use core::interfaces::{ ID3D11DeviceChildT, ID3D11Device };
+use constants::*;
+use core::interfaces::{ ID3D11DeviceChild, ID3D11DeviceChildVtbl };
 use resource::enumerations::D3D11_RESOURCE_DIMENSION;
 use resource::structures::{ D3D11_UNORDERED_ACCESS_VIEW_DESC,
 	D3D11_SHADER_RESOURCE_VIEW_DESC,
@@ -43,71 +44,46 @@ use resource::structures::{ D3D11_UNORDERED_ACCESS_VIEW_DESC,
 	D3D11_TEXTURE2D_DESC,
 	D3D11_TEXTURE3D_DESC };
 
-#[repr(C)] pub struct ID3D11Buffer { pub vtable: *mut ID3D11BufferVtbl }
-#[repr(C)] pub struct ID3D11Resource { pub vtable: *mut ID3D11ResourceVtbl }
-#[repr(C)] pub struct ID3D11Texture1D { pub vtable: *mut ID3D11Texture1DVtbl }
-#[repr(C)] pub struct ID3D11Texture2D { pub vtable: *mut ID3D11Texture2DVtbl }
-#[repr(C)] pub struct ID3D11Texture3D { pub vtable: *mut ID3D11Texture3DVtbl }
-#[repr(C)] pub struct ID3D11DepthStencilView { pub vtable: *mut ID3D11DepthStencilViewVtbl }
-#[repr(C)] pub struct ID3D11RenderTargetView { pub vtable: *mut ID3D11RenderTargetViewVtbl }
-#[repr(C)] pub struct ID3D11ShaderResourceView { pub vtable: *mut ID3D11ShaderResourceViewVtbl }
-#[repr(C)] pub struct ID3D11UnorderedAccessView { pub vtable: *mut ID3D11UnorderedAccessViewVtbl }
-#[repr(C)] pub struct ID3D11View { pub vtable: *mut ID3D11ViewVtbl }
+com_interface!{ ID3D11Resource(ID3D11ResourceVtbl): ID3D11DeviceChild(ID3D11DeviceChildVtbl) {
+	fn GetType(&mut self, pResourceDimension: *mut D3D11_RESOURCE_DIMENSION) -> (),
+	fn SetEvictionPriority(&mut self, EvictionPriority: UINT) -> (),
+	fn GetEvictionPriority(&mut self) -> UINT
+}}
+com_interface!{ ID3D11Buffer(ID3D11BufferVtbl): ID3D11Resource(ID3D11ResourceVtbl) {
+	fn GetDesc(&mut self, pDesc: *mut D3D11_BUFFER_DESC) -> ()
+}}
+com_interface!{ ID3D11Texture1D(ID3D11Texture1DVtbl): ID3D11Resource(ID3D11ResourceVtbl) {
+	fn GetDesc(&mut self, pDesc: *mut D3D11_TEXTURE1D_DESC) -> ()
+}}
+com_interface!{ ID3D11Texture2D(ID3D11Texture2DVtbl): ID3D11Resource(ID3D11ResourceVtbl) {
+	fn GetDesc(&mut self, pDesc: *mut D3D11_TEXTURE2D_DESC) -> ()
+}}
+com_interface!{ ID3D11Texture3D(ID3D11Texture3DVtbl): ID3D11Resource(ID3D11ResourceVtbl) {
+	fn GetDesc(&mut self, pDesc: *mut D3D11_TEXTURE3D_DESC) -> ()
+}}
+com_interface!{ ID3D11View(ID3D11ViewVtbl): ID3D11DeviceChild(ID3D11DeviceChildVtbl) {
+	fn GetResource(&mut self, ppResource: *mut *mut ID3D11Resource) -> ()
+}}
+com_interface!{ ID3D11DepthStencilView(ID3D11DepthStencilViewVtbl): ID3D11View(ID3D11ViewVtbl) {
+	fn GetDesc(&mut self, pDesc: *mut D3D11_DEPTH_STENCIL_VIEW_DESC) -> ()
+}}
+com_interface!{ ID3D11RenderTargetView(ID3D11RenderTargetViewVtbl): ID3D11View(ID3D11ViewVtbl) {
+	fn GetDesc(&mut self, pDesc: *mut D3D11_RENDER_TARGET_VIEW_DESC) -> ()
+}}
+com_interface!{ ID3D11ShaderResourceView(ID3D11ShaderResourceViewVtbl): ID3D11View(ID3D11ViewVtbl) {
+	fn GetDesc(&mut self, pDesc: *mut D3D11_SHADER_RESOURCE_VIEW_DESC) -> ()
+}}
+com_interface!{ ID3D11UnorderedAccessView(ID3D11UnorderedAccessViewVtbl): ID3D11View(ID3D11ViewVtbl) {
+	fn GetDesc(&mut self, pDesc: *mut D3D11_UNORDERED_ACCESS_VIEW_DESC) -> ()
+}}
 
-c_vtable!{
-	_ of (), trait IUnknownT {
-		fn QueryInterface(riid: REFIID, object: *mut *mut c_void) -> HRESULT,
-		fn AddRef() -> ULONG,
-		fn Release() -> ULONG,
-	} with heirs [
-		_ of (), trait ID3D11DeviceChildT {
-			fn GetDevice(device: *mut *mut ID3D11Device) -> (),
-			fn GetPrivateData(guid: REFGUID, data_size: *mut UINT, data: *mut c_void) -> HRESULT,
-			fn SetPrivateData(guid: REFGUID, data_size: UINT, data: *const c_void) -> HRESULT,
-			fn SetPrivateDataInterface(guid: REFGUID, data: *const IUnknown) -> HRESULT,
-		} with heirs [
-			pub ID3D11ResourceVtbl of ID3D11Resource, pub trait ID3D11ResourceT {
-				fn GetType(pResourceDimension: *mut D3D11_RESOURCE_DIMENSION) -> (),
-				fn SetEvictionPriority(EvictionPriority: UINT) -> (),
-				fn GetEvictionPriority() -> UINT,
-			} with heirs [
-				pub ID3D11BufferVtbl of ID3D11Buffer, pub trait ID3D11BufferT {
-					fn GetDesc(pDesc: *mut D3D11_BUFFER_DESC) -> (),
-				}
-				pub ID3D11Texture1DVtbl of ID3D11Texture1D, pub trait ID3D11Texture1DT {
-					fn GetDesc(pDesc: *mut D3D11_TEXTURE1D_DESC) -> (),
-				}
-				pub ID3D11Texture2DVtbl of ID3D11Texture2D, pub trait ID3D11Texture2DT {
-					fn GetDesc(pDesc: *mut D3D11_TEXTURE2D_DESC) -> (),
-				}
-				pub ID3D11Texture3DVtbl of ID3D11Texture3D, pub trait ID3D11Texture3DT {
-					fn GetDesc(pDesc: *mut D3D11_TEXTURE3D_DESC) -> (),
-				}
-			]
-			pub ID3D11ViewVtbl of ID3D11View, pub trait ID3D11ViewT {
-				fn GetResource(ppResource: *mut *mut ID3D11Resource) -> (),
-			} with heirs [
-				pub ID3D11DepthStencilViewVtbl of ID3D11DepthStencilView,
-					pub trait ID3D11DepthStencilViewT
-				{
-					fn GetDesc(pDesc: *mut D3D11_DEPTH_STENCIL_VIEW_DESC) -> (),
-				}
-				pub ID3D11RenderTargetViewVtbl of ID3D11RenderTargetView,
-					pub trait ID3D11RenderTargetViewT
-				{
-					fn GetDesc(pDesc: *mut D3D11_RENDER_TARGET_VIEW_DESC) -> (),
-				}
-				pub ID3D11ShaderResourceViewVtbl of ID3D11ShaderResourceView,
-					pub trait ID3D11ShaderResourceViewT
-				{
-					fn GetDesc(pDesc: *mut D3D11_SHADER_RESOURCE_VIEW_DESC) -> (),
-				}
-				pub ID3D11UnorderedAccessViewVtbl of ID3D11UnorderedAccessView,
-					pub trait ID3D11UnorderedAccessViewT
-				{
-					fn GetDesc(pDesc: *mut D3D11_UNORDERED_ACCESS_VIEW_DESC) -> (),
-				}
-			]
-		]
-	]
-}
+impl QueryIID for ID3D11Buffer { fn iid() -> GUID { IID_ID3D11Buffer } }
+impl QueryIID for ID3D11Resource { fn iid() -> GUID { IID_ID3D11Resource } }
+impl QueryIID for ID3D11Texture1D { fn iid() -> GUID { IID_ID3D11Texture1D } }
+impl QueryIID for ID3D11Texture2D { fn iid() -> GUID { IID_ID3D11Texture2D } }
+impl QueryIID for ID3D11Texture3D { fn iid() -> GUID { IID_ID3D11Texture3D } }
+impl QueryIID for ID3D11DepthStencilView { fn iid() -> GUID { IID_ID3D11DepthStencilView } }
+impl QueryIID for ID3D11RenderTargetView { fn iid() -> GUID { IID_ID3D11RenderTargetView } }
+impl QueryIID for ID3D11ShaderResourceView { fn iid() -> GUID { IID_ID3D11ShaderResourceView } }
+impl QueryIID for ID3D11UnorderedAccessView { fn iid() -> GUID { IID_ID3D11UnorderedAccessView } }
+impl QueryIID for ID3D11View { fn iid() -> GUID { IID_ID3D11View } }

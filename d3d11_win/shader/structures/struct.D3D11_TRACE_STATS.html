@@ -41,9 +41,11 @@
     </nav>
 
     <section id='main' class="content struct">
-<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>d3d11_win</a>::<wbr><a href='../index.html'>shader</a>::<wbr><a href='index.html'>structures</a>::<wbr><a class='struct' href=''>D3D11_TRACE_STATS</a><wbr></span><span class='out-of-band'><span id='render-detail'>
-            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-42031' href='../../../src/d3d11_win/shader/structures.rs.html#229-253'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>d3d11_win</a>::<wbr><a href='../index.html'>shader</a>::<wbr><a href='index.html'>structures</a>::<wbr><a class='struct' href=''>D3D11_TRACE_STATS</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-16756' class='srclink' href='../../../src/d3d11_win/shader/structures.rs.html#229-253' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct D3D11_TRACE_STATS {
     pub TraceDesc: <a class='struct' href='../../../d3d11_win/shader/structures/struct.D3D11_SHADER_TRACE_DESC.html' title='d3d11_win::shader::structures::D3D11_SHADER_TRACE_DESC'>D3D11_SHADER_TRACE_DESC</a>,
     pub NumInvocationsInStamp: <a class='type' href='../../../winapi/basetsd/type.UINT8.html' title='winapi::basetsd::UINT8'>UINT8</a>,
@@ -69,7 +71,30 @@
     pub HSOutputPatchConstantMask: <a href='http://doc.rust-lang.org/nightly/std/primitive.array.html'>[<a class='type' href='../../../d3d11_win/shader/structures/type.D3D11_TRACE_COMPONENT_MASK.html' title='d3d11_win::shader::structures::D3D11_TRACE_COMPONENT_MASK'>D3D11_TRACE_COMPONENT_MASK</a>; 32]</a>,
     pub DSInputPatchConstantMask: <a href='http://doc.rust-lang.org/nightly/std/primitive.array.html'>[<a class='type' href='../../../d3d11_win/shader/structures/type.D3D11_TRACE_COMPONENT_MASK.html' title='d3d11_win::shader::structures::D3D11_TRACE_COMPONENT_MASK'>D3D11_TRACE_COMPONENT_MASK</a>; 32]</a>,
 }</pre><h2 class='fields'>Fields</h2>
-<table><tr><td id='structfield.TraceDesc'><a class='stability Unmarked' title='No stability level'></a><code>TraceDesc</code></td><td></td></tr><tr><td id='structfield.NumInvocationsInStamp'><a class='stability Unmarked' title='No stability level'></a><code>NumInvocationsInStamp</code></td><td></td></tr><tr><td id='structfield.TargetStampIndex'><a class='stability Unmarked' title='No stability level'></a><code>TargetStampIndex</code></td><td></td></tr><tr><td id='structfield.NumTraceSteps'><a class='stability Unmarked' title='No stability level'></a><code>NumTraceSteps</code></td><td></td></tr><tr><td id='structfield.InputMask'><a class='stability Unmarked' title='No stability level'></a><code>InputMask</code></td><td></td></tr><tr><td id='structfield.OutputMask'><a class='stability Unmarked' title='No stability level'></a><code>OutputMask</code></td><td></td></tr><tr><td id='structfield.NumTemps'><a class='stability Unmarked' title='No stability level'></a><code>NumTemps</code></td><td></td></tr><tr><td id='structfield.MaxIndexableTempIndex'><a class='stability Unmarked' title='No stability level'></a><code>MaxIndexableTempIndex</code></td><td></td></tr><tr><td id='structfield.IndexableTempSize'><a class='stability Unmarked' title='No stability level'></a><code>IndexableTempSize</code></td><td></td></tr><tr><td id='structfield.ImmediateConstantBufferSize'><a class='stability Unmarked' title='No stability level'></a><code>ImmediateConstantBufferSize</code></td><td></td></tr><tr><td id='structfield.PixelPosition'><a class='stability Unmarked' title='No stability level'></a><code>PixelPosition</code></td><td></td></tr><tr><td id='structfield.PixelCoverageMask'><a class='stability Unmarked' title='No stability level'></a><code>PixelCoverageMask</code></td><td></td></tr><tr><td id='structfield.PixelDiscardedMask'><a class='stability Unmarked' title='No stability level'></a><code>PixelDiscardedMask</code></td><td></td></tr><tr><td id='structfield.PixelCoverageMaskAfterShader'><a class='stability Unmarked' title='No stability level'></a><code>PixelCoverageMaskAfterShader</code></td><td></td></tr><tr><td id='structfield.PixelCoverageMaskAfterA2CSampleMask'><a class='stability Unmarked' title='No stability level'></a><code>PixelCoverageMaskAfterA2CSampleMask</code></td><td></td></tr><tr><td id='structfield.PixelCoverageMaskAfterA2CSampleMaskDepth'><a class='stability Unmarked' title='No stability level'></a><code>PixelCoverageMaskAfterA2CSampleMaskDepth</code></td><td></td></tr><tr><td id='structfield.PixelCoverageMaskAfterA2CSampleMaskDepthStencil'><a class='stability Unmarked' title='No stability level'></a><code>PixelCoverageMaskAfterA2CSampleMaskDepthStencil</code></td><td></td></tr><tr><td id='structfield.PSOutputsDepth'><a class='stability Unmarked' title='No stability level'></a><code>PSOutputsDepth</code></td><td></td></tr><tr><td id='structfield.PSOutputsMask'><a class='stability Unmarked' title='No stability level'></a><code>PSOutputsMask</code></td><td></td></tr><tr><td id='structfield.GSInputPrimitive'><a class='stability Unmarked' title='No stability level'></a><code>GSInputPrimitive</code></td><td></td></tr><tr><td id='structfield.GSInputsPrimitiveID'><a class='stability Unmarked' title='No stability level'></a><code>GSInputsPrimitiveID</code></td><td></td></tr><tr><td id='structfield.HSOutputPatchConstantMask'><a class='stability Unmarked' title='No stability level'></a><code>HSOutputPatchConstantMask</code></td><td></td></tr><tr><td id='structfield.DSInputPatchConstantMask'><a class='stability Unmarked' title='No stability level'></a><code>DSInputPatchConstantMask</code></td><td></td></tr></table></section>
+<table><tr class='stab '>
+                                  <td id='structfield.TraceDesc'><code>TraceDesc</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.NumInvocationsInStamp'><code>NumInvocationsInStamp</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.TargetStampIndex'><code>TargetStampIndex</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.NumTraceSteps'><code>NumTraceSteps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.InputMask'><code>InputMask</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.OutputMask'><code>OutputMask</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.NumTemps'><code>NumTemps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxIndexableTempIndex'><code>MaxIndexableTempIndex</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.IndexableTempSize'><code>IndexableTempSize</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.ImmediateConstantBufferSize'><code>ImmediateConstantBufferSize</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.PixelPosition'><code>PixelPosition</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.PixelCoverageMask'><code>PixelCoverageMask</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.PixelDiscardedMask'><code>PixelDiscardedMask</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.PixelCoverageMaskAfterShader'><code>PixelCoverageMaskAfterShader</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.PixelCoverageMaskAfterA2CSampleMask'><code>PixelCoverageMaskAfterA2CSampleMask</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.PixelCoverageMaskAfterA2CSampleMaskDepth'><code>PixelCoverageMaskAfterA2CSampleMaskDepth</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.PixelCoverageMaskAfterA2CSampleMaskDepthStencil'><code>PixelCoverageMaskAfterA2CSampleMaskDepthStencil</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.PSOutputsDepth'><code>PSOutputsDepth</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.PSOutputsMask'><code>PSOutputsMask</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.GSInputPrimitive'><code>GSInputPrimitive</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.GSInputsPrimitiveID'><code>GSInputsPrimitiveID</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.HSOutputPatchConstantMask'><code>HSOutputPatchConstantMask</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.DSInputPatchConstantMask'><code>DSInputPatchConstantMask</code></td><td></td></tr></table></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -101,6 +126,10 @@
                 <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
             </p>
         </div>
     </div>

@@ -7,7 +7,7 @@ repository = "https://github.com/bryal/d3d11-rs"
 readme = "README.md"
 documentation = "http://bryal.github.io/d3d11-rs/d3d11_win/"
 keywords = ["Windows", "Direct3D", "DirectX", "DXGI"]
-license = "MIT"
+license = "MIT OR Apache-2.0"
 
 [dependencies]
 winapi = "*"

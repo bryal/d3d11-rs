@@ -1,25 +1,3 @@
-// The MIT License (MIT)
-//
-// Copyright (c) 2015 Johan Johansson
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
-
 //! Interfaces for the two basic types of resources: buffers and textures
 //!
 //! # References
@@ -30,20 +8,19 @@
 
 use winapi::minwindef::*;
 use winapi::basetsd::*;
-use winapi::{ HRESULT, LPCSTR, GUID, LPSTR };
-use dxgi::{ IUnknown, IUnknownVtbl, QueryIID, COMInterface };
+use winapi::{HRESULT, LPCSTR, GUID, LPSTR};
+use dxgi::{IUnknown, IUnknownVtbl, QueryIID, COMInterface};
 
 use constants::*;
-use common_version::enumerations::{ D3D_FEATURE_LEVEL, D3D_PRIMITIVE };
+use common_version::enumerations::{D3D_FEATURE_LEVEL, D3D_PRIMITIVE};
 use common_version::interfaces::ID3DBlob;
-use core::interfaces::{ ID3D11DeviceChild, ID3D11DeviceChildVtbl };
-use shader::structures::{ D3D11_SHADER_VARIABLE_DESC, D3D11_SHADER_TYPE_DESC,
-	D3D11_SHADER_TRACE_DESC, D3D11_SHADER_BUFFER_DESC,
-	D3D11_TRACE_REGISTER, D3D11_TRACE_VALUE,
-	D3D11_TRACE_STEP, D3D11_TRACE_STATS,
-	D3D11_SHADER_DESC, D3D11_SHADER_INPUT_BIND_DESC,
-	D3D11_SIGNATURE_PARAMETER_DESC, D3D11_PARAMETER_DESC,
-	D3D11_LIBRARY_DESC, D3D11_CLASS_INSTANCE_DESC };
+use core::interfaces::{ID3D11DeviceChild, ID3D11DeviceChildVtbl};
+use shader::structures::{D3D11_SHADER_VARIABLE_DESC, D3D11_SHADER_TYPE_DESC,
+                         D3D11_SHADER_TRACE_DESC, D3D11_SHADER_BUFFER_DESC, D3D11_TRACE_REGISTER,
+                         D3D11_TRACE_VALUE, D3D11_TRACE_STEP, D3D11_TRACE_STATS,
+                         D3D11_SHADER_DESC, D3D11_SHADER_INPUT_BIND_DESC,
+                         D3D11_SIGNATURE_PARAMETER_DESC, D3D11_PARAMETER_DESC, D3D11_LIBRARY_DESC,
+                         D3D11_CLASS_INSTANCE_DESC};
 
 com_interface!{ ID3D11ClassInstance(ID3D11ClassInstanceVtbl): ID3D11DeviceChild(ID3D11DeviceChildVtbl) {
 	fn GetClassLinkage(&mut self, ppLinkage: *mut *mut ID3D11ClassLinkage) -> (),
@@ -161,18 +138,78 @@ interface!{ ID3D11ShaderReflectionVariable(ID3D11ShaderReflectionVariableVtbl) {
 	fn GetInterfaceSlot(&mut self, uArrayIndex: UINT) -> UINT
 }}
 
-impl QueryIID for ID3D11ClassInstance { fn iid() -> GUID { IID_ID3D11ClassInstance } }
-impl QueryIID for ID3D11ClassLinkage { fn iid() -> GUID { IID_ID3D11ClassLinkage } }
-impl QueryIID for ID3D11ComputeShader { fn iid() -> GUID { IID_ID3D11ComputeShader } }
-impl QueryIID for ID3D11DomainShader { fn iid() -> GUID { IID_ID3D11DomainShader } }
-impl QueryIID for ID3D11GeometryShader { fn iid() -> GUID { IID_ID3D11GeometryShader } }
-impl QueryIID for ID3D11HullShader { fn iid() -> GUID { IID_ID3D11HullShader } }
-impl QueryIID for ID3D11PixelShader { fn iid() -> GUID { IID_ID3D11PixelShader } }
-impl QueryIID for ID3D11VertexShader { fn iid() -> GUID { IID_ID3D11VertexShader } }
-impl QueryIID for ID3D11FunctionLinkingGraph { fn iid() -> GUID { IID_ID3D11FunctionLinkingGraph } }
-impl QueryIID for ID3D11LibraryReflection { fn iid() -> GUID { IID_ID3D11LibraryReflection } }
-impl QueryIID for ID3D11Linker { fn iid() -> GUID { IID_ID3D11Linker } }
-impl QueryIID for ID3D11LinkingNode { fn iid() -> GUID { IID_ID3D11LinkingNode } }
-impl QueryIID for ID3D11Module { fn iid() -> GUID { IID_ID3D11Module } }
-impl QueryIID for ID3D11ModuleInstance { fn iid() -> GUID { IID_ID3D11ModuleInstance } }
-impl QueryIID for ID3D11ShaderReflection { fn iid() -> GUID { IID_ID3D11ShaderReflection } }
+impl QueryIID for ID3D11ClassInstance {
+    fn iid() -> GUID {
+        IID_ID3D11ClassInstance
+    }
+}
+impl QueryIID for ID3D11ClassLinkage {
+    fn iid() -> GUID {
+        IID_ID3D11ClassLinkage
+    }
+}
+impl QueryIID for ID3D11ComputeShader {
+    fn iid() -> GUID {
+        IID_ID3D11ComputeShader
+    }
+}
+impl QueryIID for ID3D11DomainShader {
+    fn iid() -> GUID {
+        IID_ID3D11DomainShader
+    }
+}
+impl QueryIID for ID3D11GeometryShader {
+    fn iid() -> GUID {
+        IID_ID3D11GeometryShader
+    }
+}
+impl QueryIID for ID3D11HullShader {
+    fn iid() -> GUID {
+        IID_ID3D11HullShader
+    }
+}
+impl QueryIID for ID3D11PixelShader {
+    fn iid() -> GUID {
+        IID_ID3D11PixelShader
+    }
+}
+impl QueryIID for ID3D11VertexShader {
+    fn iid() -> GUID {
+        IID_ID3D11VertexShader
+    }
+}
+impl QueryIID for ID3D11FunctionLinkingGraph {
+    fn iid() -> GUID {
+        IID_ID3D11FunctionLinkingGraph
+    }
+}
+impl QueryIID for ID3D11LibraryReflection {
+    fn iid() -> GUID {
+        IID_ID3D11LibraryReflection
+    }
+}
+impl QueryIID for ID3D11Linker {
+    fn iid() -> GUID {
+        IID_ID3D11Linker
+    }
+}
+impl QueryIID for ID3D11LinkingNode {
+    fn iid() -> GUID {
+        IID_ID3D11LinkingNode
+    }
+}
+impl QueryIID for ID3D11Module {
+    fn iid() -> GUID {
+        IID_ID3D11Module
+    }
+}
+impl QueryIID for ID3D11ModuleInstance {
+    fn iid() -> GUID {
+        IID_ID3D11ModuleInstance
+    }
+}
+impl QueryIID for ID3D11ShaderReflection {
+    fn iid() -> GUID {
+        IID_ID3D11ShaderReflection
+    }
+}

@@ -1,6 +1,6 @@
 [package]
 name = "d3d11-win"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["bryal <96.bryal@gmail.com>"]
 description = "FFI bindings for D3D11"
 repository = "https://github.com/bryal/d3d11-rs"
@@ -10,5 +10,5 @@ keywords = ["Windows", "Direct3D", "DirectX", "DXGI"]
 license = "MIT OR Apache-2.0"
 
 [dependencies]
-winapi = "*"
-dxgi-win = "*"
+winapi = "0.2.5"
+dxgi-win = "0.2.1"

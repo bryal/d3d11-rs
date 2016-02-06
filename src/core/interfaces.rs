@@ -1,25 +1,3 @@
-// The MIT License (MIT)
-//
-// Copyright (c) 2015 Johan Johansson
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
-
 //! Interfaces provided by D3D11
 //!
 //! # References
@@ -30,31 +8,28 @@
 
 use winapi::minwindef::*;
 use winapi::basetsd::*;
-use winapi::{ REFGUID, HRESULT, GUID, REFIID, HANDLE, LPSTR, LPCWSTR, c_void };
-use dxgi::{ DXGI_FORMAT, QueryIID, IUnknown, IUnknownVtbl, COMInterface };
+use winapi::{REFGUID, HRESULT, GUID, REFIID, HANDLE, LPSTR, LPCWSTR, c_void};
+use dxgi::{DXGI_FORMAT, QueryIID, IUnknown, IUnknownVtbl, COMInterface};
 
 use constants::*;
 use core::enumerations::*;
 use core::structures::*;
 use common_version::enumerations::D3D_FEATURE_LEVEL;
 use resource::enumerations::D3D11_MAP;
-use resource::structures::{ D3D11_BUFFER_DESC, D3D11_SHADER_RESOURCE_VIEW_DESC,
-	D3D11_SUBRESOURCE_DATA, D3D11_UNORDERED_ACCESS_VIEW_DESC,
-	D3D11_RENDER_TARGET_VIEW_DESC, D3D11_DEPTH_STENCIL_VIEW_DESC,
-	D3D11_TEXTURE1D_DESC, D3D11_TEXTURE2D_DESC,
-	D3D11_PACKED_MIP_DESC, D3D11_TILE_SHAPE,
-	D3D11_TILED_RESOURCE_COORDINATE, D3D11_TILE_REGION_SIZE,
-	D3D11_MAPPED_SUBRESOURCE, D3D11_TEXTURE3D_DESC,
-	D3D11_SUBRESOURCE_TILING };
-use resource::interfaces::{ ID3D11View, ID3D11Buffer,
-	ID3D11UnorderedAccessView, ID3D11ShaderResourceView,
-	ID3D11DepthStencilView, ID3D11RenderTargetView,
-	ID3D11Texture1D, ID3D11Texture2D,
-	ID3D11Texture3D, ID3D11Resource };
-use shader::interfaces::{ ID3D11ClassInstance, ID3D11PixelShader,
-	ID3D11VertexShader, ID3D11GeometryShader,
-	ID3D11HullShader, ID3D11DomainShader,
-	ID3D11ComputeShader, ID3D11ClassLinkage };
+use resource::structures::{D3D11_BUFFER_DESC, D3D11_SHADER_RESOURCE_VIEW_DESC,
+                           D3D11_SUBRESOURCE_DATA, D3D11_UNORDERED_ACCESS_VIEW_DESC,
+                           D3D11_RENDER_TARGET_VIEW_DESC, D3D11_DEPTH_STENCIL_VIEW_DESC,
+                           D3D11_TEXTURE1D_DESC, D3D11_TEXTURE2D_DESC, D3D11_PACKED_MIP_DESC,
+                           D3D11_TILE_SHAPE, D3D11_TILED_RESOURCE_COORDINATE,
+                           D3D11_TILE_REGION_SIZE, D3D11_MAPPED_SUBRESOURCE, D3D11_TEXTURE3D_DESC,
+                           D3D11_SUBRESOURCE_TILING};
+use resource::interfaces::{ID3D11View, ID3D11Buffer, ID3D11UnorderedAccessView,
+                           ID3D11ShaderResourceView, ID3D11DepthStencilView,
+                           ID3D11RenderTargetView, ID3D11Texture1D, ID3D11Texture2D,
+                           ID3D11Texture3D, ID3D11Resource};
+use shader::interfaces::{ID3D11ClassInstance, ID3D11PixelShader, ID3D11VertexShader,
+                         ID3D11GeometryShader, ID3D11HullShader, ID3D11DomainShader,
+                         ID3D11ComputeShader, ID3D11ClassLinkage};
 
 com_interface!{ ID3D11DeviceChild(ID3D11DeviceChildVtbl): IUnknown(IUnknownVtbl) {
 	fn GetDevice(&mut self, device: *mut *mut ID3D11Device) -> (),
@@ -296,23 +271,103 @@ com_interface!{ ID3D11SamplerState(ID3D11SamplerStateVtbl): IUnknown(IUnknownVtb
 	fn GetDesc(&mut self, desc: *mut D3D11_SAMPLER_DESC) -> ()
 }}
 
-impl QueryIID for ID3D11Asynchronous { fn iid() -> GUID { IID_ID3D11Asynchronous } }
-impl QueryIID for ID3D11BlendState { fn iid() -> GUID { IID_ID3D11BlendState } }
-impl QueryIID for ID3D11BlendState1 { fn iid() -> GUID { IID_ID3D11BlendState1 } }
-impl QueryIID for ID3D11Counter { fn iid() -> GUID { IID_ID3D11Counter } }
-impl QueryIID for ID3D11CommandList { fn iid() -> GUID { IID_ID3D11CommandList } }
-impl QueryIID for ID3D11DepthStencilState { fn iid() -> GUID { IID_ID3D11DepthStencilState } }
-impl QueryIID for ID3D11Device { fn iid() -> GUID { IID_ID3D11Device } }
-impl QueryIID for ID3D11Device1 { fn iid() -> GUID { IID_ID3D11Device1 } }
-impl QueryIID for ID3D11Device2 { fn iid() -> GUID { IID_ID3D11Device2 } }
-impl QueryIID for ID3D11DeviceChild { fn iid() -> GUID { IID_ID3D11DeviceChild } }
-impl QueryIID for ID3D11DeviceContext { fn iid() -> GUID { IID_ID3D11DeviceContext } }
-impl QueryIID for ID3D11DeviceContext1 { fn iid() -> GUID { IID_ID3D11DeviceContext1 } }
-impl QueryIID for ID3D11DeviceContext2 { fn iid() -> GUID { IID_ID3D11DeviceContext2 } }
-impl QueryIID for ID3DDeviceContextState { fn iid() -> GUID { IID_ID3DDeviceContextState } }
-impl QueryIID for ID3D11InputLayout { fn iid() -> GUID { IID_ID3D11InputLayout } }
-impl QueryIID for ID3D11Predicate { fn iid() -> GUID { IID_ID3D11Predicate } }
-impl QueryIID for ID3D11Query { fn iid() -> GUID { IID_ID3D11Query } }
-impl QueryIID for ID3D11RasterizerState { fn iid() -> GUID { IID_ID3D11RasterizerState } }
-impl QueryIID for ID3D11RasterizerState1 { fn iid() -> GUID { IID_ID3D11RasterizerState1 } }
-impl QueryIID for ID3D11SamplerState { fn iid() -> GUID { IID_ID3D11SamplerState } }
+impl QueryIID for ID3D11Asynchronous {
+    fn iid() -> GUID {
+        IID_ID3D11Asynchronous
+    }
+}
+impl QueryIID for ID3D11BlendState {
+    fn iid() -> GUID {
+        IID_ID3D11BlendState
+    }
+}
+impl QueryIID for ID3D11BlendState1 {
+    fn iid() -> GUID {
+        IID_ID3D11BlendState1
+    }
+}
+impl QueryIID for ID3D11Counter {
+    fn iid() -> GUID {
+        IID_ID3D11Counter
+    }
+}
+impl QueryIID for ID3D11CommandList {
+    fn iid() -> GUID {
+        IID_ID3D11CommandList
+    }
+}
+impl QueryIID for ID3D11DepthStencilState {
+    fn iid() -> GUID {
+        IID_ID3D11DepthStencilState
+    }
+}
+impl QueryIID for ID3D11Device {
+    fn iid() -> GUID {
+        IID_ID3D11Device
+    }
+}
+impl QueryIID for ID3D11Device1 {
+    fn iid() -> GUID {
+        IID_ID3D11Device1
+    }
+}
+impl QueryIID for ID3D11Device2 {
+    fn iid() -> GUID {
+        IID_ID3D11Device2
+    }
+}
+impl QueryIID for ID3D11DeviceChild {
+    fn iid() -> GUID {
+        IID_ID3D11DeviceChild
+    }
+}
+impl QueryIID for ID3D11DeviceContext {
+    fn iid() -> GUID {
+        IID_ID3D11DeviceContext
+    }
+}
+impl QueryIID for ID3D11DeviceContext1 {
+    fn iid() -> GUID {
+        IID_ID3D11DeviceContext1
+    }
+}
+impl QueryIID for ID3D11DeviceContext2 {
+    fn iid() -> GUID {
+        IID_ID3D11DeviceContext2
+    }
+}
+impl QueryIID for ID3DDeviceContextState {
+    fn iid() -> GUID {
+        IID_ID3DDeviceContextState
+    }
+}
+impl QueryIID for ID3D11InputLayout {
+    fn iid() -> GUID {
+        IID_ID3D11InputLayout
+    }
+}
+impl QueryIID for ID3D11Predicate {
+    fn iid() -> GUID {
+        IID_ID3D11Predicate
+    }
+}
+impl QueryIID for ID3D11Query {
+    fn iid() -> GUID {
+        IID_ID3D11Query
+    }
+}
+impl QueryIID for ID3D11RasterizerState {
+    fn iid() -> GUID {
+        IID_ID3D11RasterizerState
+    }
+}
+impl QueryIID for ID3D11RasterizerState1 {
+    fn iid() -> GUID {
+        IID_ID3D11RasterizerState1
+    }
+}
+impl QueryIID for ID3D11SamplerState {
+    fn iid() -> GUID {
+        IID_ID3D11SamplerState
+    }
+}

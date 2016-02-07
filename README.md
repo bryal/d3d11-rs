@@ -1,7 +1,8 @@
 # d3d11-rs
+
 Rust bindings for D3D11
 
-[Crate](https://crates.io/crates/d3d11-win/)
+[![Crate](https://img.shields.io/crates/v/d3d11-win.svg)](https://crates.io/crates/d3d11-win/)
 
 [Documentation](https://bryal.github.io/d3d11-rs/d3d11_win/index.html)
 

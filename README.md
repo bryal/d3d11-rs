@@ -1,3 +1,8 @@
+# DEPRECATED
+
+Check out [winapi-rs](https://github.com/retep998/winapi-rs) for a more extensive and actively updated
+crate (as of 2016-10-22)
+
 # d3d11-rs
 
 Rust bindings for D3D11
